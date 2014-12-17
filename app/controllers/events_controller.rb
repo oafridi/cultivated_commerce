@@ -36,7 +36,6 @@ class EventsController < ApplicationController
 
   def attend
     @event = Event.find_by(id: params[:id])
-    # @event.participants.create(event_id: (params[:id]), participant_id:(current_user.id))
     EventsParticipant.create(event_id: (params[:id]), participant_id:(current_user.id))
     redirect_to current_user
   end
