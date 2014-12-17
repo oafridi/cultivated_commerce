@@ -1,15 +1,19 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+v1 = User.create(first_name:'Bob', last_name:'Marley', user_name:'chrisb', email:'bobmarley@gmail.com',
+                 address_line_1:'277A Duncan st.', zipcode:'94131', about:'I play sax', phone:'555-717-5555', private_contact: true, 
+                 user_img:'chris.jpg', password:'12345678', password_confirmation:'12345678')
 
-v1 = User.create(first_name:'Bob', last_name:'Marley', user_name:'chrisb', email:'bobmarley@gmail.com',address_line_1:'277A Duncan st.', zipcode:'94131', about:'', phone:'555-717-5555', private_contact: true, user_img:"chris.jpg", user_img:'chris.jpg',password:'12345678',password_confirmation:'12345678')
-v2 = User.create(first_name:'Osman', last_name:'Afridi', user_name:'osman', email: 'bobmarley@gmail.com', address_line_1:'', zipcode:'', about:'', phone:'(555) 447-5555', private_contact: true, user_img:'', user_img:"osman.jpg",password:'12345678',password_confirmation:'12345678')
-v3 = User.create(first_name:'John', last_name:'Belushi', user_name:'johhny', email:'bobmarley@gmail.com',  address_line_1:'', zipcode:'', about:'', phone:'(555) 373-5555', private_contact: true, user_img:'', user_img:"murat.jpg",password:'12345678',password_confirmation:'12345678')
-v4 = User.create(first_name:'Bob', last_name:'Marley', user_name:'vv', email: 'bobmarley@gmail.com',address_line_1:'', zipcode:'', about:'', phone:'555-555-5555', private_contact: true, user_img:"murat.jpg",password:'12345678',password_confirmation:'12345678')
+v2 = User.create(first_name:'Osman', last_name:'Afridi', user_name:'osman', email: 'johnnycash@gmail.com', 
+                 address_line_1:'59 Yale street', zipcode:'94134', about:'I get down', phone:'(555) 447-5555', private_contact: true, 
+                 user_img:"osman.jpg", password:'12345678', password_confirmation:'12345678')
+
+v3 = User.create(first_name:'John', last_name:'Belushi', user_name:'johhny', email:'michaeljackson@gmail.com', 
+                 address_line_1:'59 silver ave', zipcode:'94134', about:'criminal', phone:'(555) 373-5555', private_contact: true, 
+                 user_img:"murat.jpg", password:'12345678', password_confirmation:'12345678')
+
+v4 = User.create(first_name:'Bob', last_name:'Marley', user_name:'vv', email: 'janetjackson@gmail.com',
+                 address_line_1:'', zipcode:'94131', about:'fun loving', phone:'555-555-5555', private_contact: true, 
+                 user_img:"murat.jpg", password:'12345678', password_confirmation:'12345678')
 
 10.times do
   User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, user_name:Faker::Internet.user_name, email: Faker::Internet.email, address_line_1: Faker::Address.street_name, zipcode: Faker::Address.zip_code, about: Faker::Lorem.sentence, phone:Faker::PhoneNumber.phone_number, private_contact: false, user_img: "user2" ,password:'12345678',password_confirmation:'12345678')
@@ -30,7 +34,6 @@ v2.listings.create(title:'Meyer Lemons', item_id: produce.id, description:'So ma
 v2.listings.create(title:'Meyer Lemons', item_id: produce.id,description:'So many lemons for trade.',desired:'Avocado',quantity:'100',image:"lemon2.jpg",active:true)
 v2.listings.create(title:'Meyer Lemons', item_id: produce.id, description:'So many lemons for trade.',desired:'Avocado',quantity:'100',image:"lemon3.jpg",active:true)
 v2.listings.create(title:'Meyer Lemons', item_id: produce.id, description:'So many lemons for trade.',desired:'Avocado',quantity:'100',image:"lemon4.jpg",active:true)
-# # v2.listings.create(ti_idtle: Faker::Commerce.product_name, description: Faker::Company.catch_phrase,desired:'apple',quantity:'3 dozen',image:"lemon3.jpg" ,active:true)
 v3.listings.create(title:'Persimmons', item_id: produce.id, description:'From my tree',desired:'Eggs',quantity:'30',image:"persimmons2.jpg",active:true)
 v3.listings.create(title:'Heirloom Tomatoes', item_id: produce.id, description:'I have as many as I need. The rest are for trade.',desired:'Eggs',quantity:'50',image:"tomatoes1.jpg",active:true)
 v3.listings.create(title:'Vine Tomatoes', item_id: produce.id, description:'Extra large. Extra tasty.',desired:'Avocado',quantity:'20',image:"tomatoes2.jpg",active:true)
