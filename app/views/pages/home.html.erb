@@ -1,0 +1,80 @@
+<section class="page-left map col-md-5 nopadding">
+
+
+      <!-- MAP -->
+  <div class="googlemap" id="multi_markers"></div>
+  <% if user_signed_in? %>
+    <div class="button-d abs mapbutton">
+      <a data-toggle="modal" data-target="#myAddEvent">Add Exchange</a>
+    </div>
+  <% else %>
+    <div class="button-d abs mapbutton">
+      <a data-toggle="modal" data-target="#mySignup">Add Exchange</a>
+    </div>
+  <% end %>
+</section>
+
+  <div class="page-right col-md-7 bg-c" >
+    <section class="filters">
+    <!-- Add Exchange Modal -->
+    <%= render "pages/addevent" %>
+
+      <!-- Type filter -->
+      <div class="filter-type row p-tb">
+        <div class="col-md-3">
+          <h2 class="bold xl">TYPE</h2>
+        </div>
+        <div class="col-md-9">
+          <ul class="type-icons text-center">
+          <% @items.each do |item| %>
+            <!-- will be created dynamically -->
+            <li class="type-icon sort bg-c1-light m-lr inl <%="filter-#{item.id}"%> ">
+              <%= image_tag item.category, alt: "item-category", class: ""%>
+            </li>
+          <% end %>
+          </ul>
+        </div>
+      </div>
+      <!-- Search filed -->
+      <div class="filter-search row p-tb">
+        <div class="col-md-3">
+          <h2 class="bold xl nopadding">SEARCH</h2>
+        </div>
+
+         <div class="col-md-7">
+          <%= form_tag('/', :method => "get", id: "search-form", class: "form f-width") do %>
+            <%= text_field_tag :search, params[:search], placeholder: "Search Listings", class: "form-control"%>
+          </div>
+            <div class="col-md-2">
+            <%= submit_tag "GO", :name => nil, class: "f-width button-d" %>
+          <% end %>
+          </div>
+      </div>
+    </section>
+
+    <section class="listings-section">
+        <ul class="listings" id="all-listings ">
+          <% if @listings && !@listings.empty? %>
+            <%= render(@listings, as: :l, locals: {counter: @counter}) %>            
+          <% else %>
+          <h2 class="p-tb text-center c-c3 bold xl">
+          SORRY, NOBODY IS SHARING THIS,<br> TRY ANOTHER ONE</h2>
+          <% end %>
+        </ul>
+    </section>
+
+  </div> <!-- end of right container-->
+<script>
+  var handler = Gmaps.build('Google');
+  handler.buildMap({
+    provider: {
+      zoom:      2,
+      center:    new google.maps.LatLng(0, 0)
+    },
+    internal: {id: 'multi_markers'}},
+    function(){
+    markers = handler.addMarkers(<%=raw @hash.to_json %>);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+  });
+</script>

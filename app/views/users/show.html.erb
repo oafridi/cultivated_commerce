@@ -1,0 +1,75 @@
+<!-- LEFT SIDE -->
+<section class="user col-md-3 bg-c2  text-center">
+	<div class="bg-w ">
+	<div class="user-info">
+		 <%= image_tag @user.user_img, alt: "user-img", class: "user-img bg-c3 " %>
+		<h2><%= @user.first_name %></h2>
+		<p><%= @user.about %></p>
+	</div>
+	<div class="text-center">
+		<% if @user.private_contact == true ||  current_user.id == @user.id %>
+		<a href="mailto:<%= @user.email %> "><i class="fa fa-envelope-o fa-3x"></i></a><br><br><br>
+
+		<% end %>
+		<% if user_signed_in? && current_user.id == @user.id %>
+		<div>
+    		<a class="button" data-toggle="modal" data-target="#myEditprofile">Edit profile</a><br><br>
+    </div>
+			<br>
+			<%= render "layouts/edit_profile" %>
+		<% end %>
+	</div>
+</div>
+
+	<!-- EVENTS I WILL ATTEND -->
+	<div>
+		<h3 class="bold">Exchange's i'm attending</h3>
+
+		<ul class="exchanges bg-w p-tb text-left">
+		<% if @user.events && !@user.events.empty? %>
+				<% @user.events.each do |e| %>
+				<%= render 'attending', e: e %>
+			<% end %>
+		<% else %>
+			<p>None right now</p>
+		<% end %>
+		</ul>
+	</div>
+
+	<!-- EVENT HOSTING -->
+	<div>
+		<h3 class="bold">Exchange's i'm hosting</h3>
+		<% if user_signed_in? && current_user.id == @user.id %>
+		<ul class="exchanges bg-w p-tb text-left">
+			<% if @user.hosted_events && !@user.hosted_events.empty? %>
+				<% @user.hosted_events.each do |e| %>
+					<%= render 'hosting', e: e %>
+				<% end %>
+			<% else %>
+			<p>None right now</p>
+			<% end %>
+		</ul><br>
+		<div class="button mapbutton">
+    		<a data-toggle="modal" data-target="#myAddEvent">add exchange</a>
+  		</div><br>
+  		<!-- Add Exchange Modal -->
+    	<%= render "pages/addevent" %>
+		<%end %>
+	</div>
+</section>
+
+<!-- RIGHT SIDE -->
+<section class="listings bg-c col-md-9">
+	<% if user_signed_in? && current_user.id == @user.id %>
+		<div>
+			<%= render "listings/form" %>
+		</div>
+	<% end %>
+	<ul class="listings">
+		<% if @user.listings && !@user.listings.empty? %>
+			<% @user.listings.order(created_at: :desc).each do |l| %>
+				<%= render 'listing', l: l %>
+			<% end %>
+		<% end %>
+	</ul>
+</section>

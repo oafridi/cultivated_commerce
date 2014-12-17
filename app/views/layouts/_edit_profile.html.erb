@@ -1,0 +1,62 @@
+<div class="modal fade" id="myEditprofile" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content text-left">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h2 class="modal-title bold c-c4 modalextra" id="myModalLabel">EDIT PROFILE</h2>
+      </div>
+      <div class="modal-body">
+        <%= form_for @user do |f| %>
+          <div class="field">
+            <%= f.label :first_name %><br />
+            <%= f.text_field :first_name, class: "form-control"%>
+          </div>
+
+          <div class="field">
+            <%= f.label :last_name %><br />
+            <%= f.text_field :last_name, class: "form-control" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :email %><br />
+            <%= f.email_field :email, class: "form-control"%>
+          </div>
+          <br><br>
+          <div class="field">
+            <%= f.label :keep_my_information_private %><br />
+            <%= f.check_box :private_contact  %> (keep my email address private)
+          </div> <br><br>
+
+          <div class="field">
+            <%= f.label :address %><br />
+            <%= f.text_field :address_line_1, class: "form-control" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :city %><br />
+            <%= f.text_field :city, class: "form-control" %>
+          </div>
+
+           <div class="field">
+            <%= f.label :state %><br />
+            <%= f.text_field :state, class: "form-control" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :zipcode %><br />
+            <%= f.text_field :zipcode, class: "form-control" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :about %><br />
+            <%= f.text_area :about, class: "form-control"%>
+          </div>
+
+          <div class="actions m-tb">
+            <%= f.submit "Save changes", class: "button" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

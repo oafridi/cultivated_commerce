@@ -1,0 +1,28 @@
+<div class="modal fade" id="myLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h2 class="modal-title bold c-c4 modalextra nopadding" id="myModalLabel">LOGIN</h2>
+      </div>
+      <div class="modal-body">
+        <%= form_for(:user, :url => session_path(:user), class: "form") do |f| %>
+          <div class="field">
+            <%= f.label :email %><br />
+            <%= f.email_field :email, class: "form-control" %>
+          </div>
+          <div class="field">
+            <%= f.label :password %>
+            <% if @validatable %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %><br />
+            <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+          </div>
+          <div class="actions">
+            <%= f.submit "Login", class: "button m-tb" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

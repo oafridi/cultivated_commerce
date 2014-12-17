@@ -1,0 +1,574 @@
+/******************************************
+/* COLORS
+/*******************************************/
+
+$bg : #c8c1b2 ; //primary
+$bg2 : lighten($bg, 10%);
+$c1 : lighten($bg, 20%); // light base colour
+$text : darken($c1, 60%);
+$c2 : grey;
+$c3 : #f7b100;
+$c4 : #d34f4f; // accent colour buttons etc
+
+// orange #f7b100
+// green #b13537;
+// other col #66df9a;
+// pink #d34f4f
+//beige #c8c1b2
+// grey #D0D0D0
+
+
+.bg-c {
+  background-color: $bg;
+}
+
+.bg-c2 {
+  background-color: $bg2;
+}
+
+.bg-c1{
+  background-color: $c1;
+}
+
+.bg-c1-light{
+  background-color: lighten($bg, 15%);
+}
+
+
+.bg-c3{
+  background-color: $c3;
+}
+.bg-c4{
+  background-color: $c4;
+}
+.bg-w{
+  background-color: white;
+}
+
+
+.c-c1{
+  color: $c1;
+}
+.c-c2{
+  color: $c2;
+}
+.c-c3{
+  color: $c3;
+}
+.c-c4{
+  color: $c4;
+}
+.c-w{
+  color: white;
+}
+.c-w a{
+  color: white;
+}
+
+/******************************************
+/* PADDING & MARGIN
+/*******************************************/
+
+$ms: 3px;
+$m: 20px;
+$p: 20px;
+
+.m-tb {
+  margin: $m 0;
+}
+
+.m-lr {
+  margin: 0 $ms;
+}
+
+.p-tb {
+  padding: $m;
+}
+
+.p-lr {
+  padding: 0 $p;
+}
+
+
+
+
+
+/******************************************
+/* BASE STYLES
+/*******************************************/
+
+
+body {
+     font-size: 12px;
+     line-height: 1.4;
+     font-family: 'Open Sans', sans-serif;
+     color: $text;
+}
+
+ul {
+   list-style-type: none;
+   padding: 0;
+   margin: 0;
+ }
+
+ p{
+  font-size: 12px;
+     line-height: 1.4;
+     font-weight: 400;
+
+ }
+
+ h1 {
+  font-size: 20px;
+  font-family: 'Open Sans', sans-serif;
+  &:hover {
+    color: $c4;
+  }
+}
+
+h3 {
+  font-size: 16px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+}
+
+.bold{
+  font-weight: 700;
+}
+
+.small {
+  font-size: 10px;
+}
+
+a {
+  color: $text;
+}
+
+a:hover
+{
+    color:#474747;
+    text-decoration: none;
+}
+
+.debugger {
+  outline: 1px solid red;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.inl {
+  display: inline-block;
+}
+
+// position
+
+.rel {
+  position: relative;
+}
+
+.abs {
+  position: absolute;
+}
+
+.fix {
+  position: fixed;
+}
+
+.nopadding {
+   padding: 0 !important;
+   margin: 0 !important;
+}
+
+
+
+/******************************************
+/* BUTTON
+/*******************************************/
+
+
+
+
+.button {
+  border:2px solid $c4;
+  cursor:pointer;
+  color:$c4;
+  background-color: white;
+  font-size:17px;
+  padding:8px;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+  padding: 10px 20px;
+  }
+  .button:hover{
+  background-color: $c4;
+  color: white;
+  border:2px solid $c4;
+}
+.button a {
+  color: $c4;
+}
+ .button:hover a{
+  color: white;
+}
+
+
+// dark button
+.button-d {
+  border:2px solid $c4;
+  cursor:pointer;
+  color:white;
+  background-color: $c4;
+  font-size:17px;
+  padding:8px;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+  padding: 10px 20px;
+  }
+  .button-d:hover{
+  background-color: white;
+  color: $c4;
+  border:2px solid $c4;
+}
+.button-d a {
+  color: white;
+}
+ .button-d:hover a{
+  color: $c4;
+}
+
+
+.line {
+    background-color: white;
+    display: inline;
+    padding: 0 10px;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+
+
+
+.f-width {
+  width: 100%;
+}
+
+.center {
+  width: 150px;
+  margin: auto;
+}
+
+/******************************************
+/* Page split
+/*******************************************/
+
+.page-left {
+height: 100vh;
+}
+
+.page-right {
+  overflow-y: scroll;
+height: 100vh;
+}
+
+.listings {
+  height: 1500px;
+}
+/******************************************
+/* NAV
+/*******************************************/
+.logo {
+ font-size: 24px;
+ margin: 0;
+ padding-top: 10px;
+ weight: 800;
+}
+
+header {
+  padding: 5px 0;
+}
+
+.userinfo1 {
+  width: 80px;
+  display: inline-block;
+  padding-top: 5px;
+}
+
+.headerline {
+  height: 3px;
+  width: 100%;
+  background-color: $c4;
+}
+
+
+/******************************************
+/* FILTER
+/*******************************************/
+
+
+.type-icon {
+  width:70px;
+  height:70px;
+  border-radius:50px;
+  right:30px;
+  top:-15px;
+  // border: 1px $c1 solid;
+    z-index: 1000;
+  :hover {
+    border: 2px $c4 solid;
+    border-radius:50px;
+  }
+}
+
+.day {
+  font-size: 24px;
+}
+
+/******************************************
+/* MAP
+/*******************************************/
+body,html{
+  height:100%;
+}
+
+.googlemap {
+  height:100vh;
+min-height:100vh;
+position: fixed;
+ -webkit-filter: grayscale(30%);
+       -moz-filter: grayscale(30%);
+        -ms-filter: grayscale(30%);
+         -o-filter: grayscale(30%);
+            filter: grayscale(30%);
+}
+
+.mapbutton {
+  right: 5px;
+  top: 5px;
+}
+
+/******************************************
+/* ITEM
+/*******************************************/
+
+.listing-img {
+ width: 100%;
+}
+
+
+
+.user-img-s {
+  width:70px;
+  height:70px;
+  border-radius:50px;
+  bottom: 0;
+  right: 0;
+  z-index: 1000;
+  border: solid 2px $c1;
+}
+
+.user-img-xs {
+  width:50px;
+  height:50px;
+  border-radius:50px;
+  bottom: 0;
+  right: 0;
+  z-index: 1000;
+  border: solid 2px $c1;
+}
+
+.showmeetup {
+  right: 0;
+  bottom: 0;
+}
+
+.listing {
+padding-left: 0;
+padding-right: 0;
+margin-left: 0;
+margin-right: 0;
+}
+
+.listing-front {
+  height: 550px;
+}
+
+.height {
+  height: 560px;
+}
+
+.overflow{
+overflow-y: scroll;
+}
+/******************************************
+/* USER
+/*******************************************/
+
+.user-img {
+border: solid 1px white;
+width: 100%;
+}
+
+
+.test {
+width: 100%;
+height: 300px;
+background-color: $c4;
+ &:hover {
+  background-color: lighten($c4, 10%);
+  }
+}
+
+.red {
+  background-color: red;
+}
+
+.user {
+  padding: 0 30px;
+  height: 1500px;
+}
+/******************************************
+/* ADD PRODUCT
+/*******************************************/
+
+.add-product {
+  border: dashed 2px $c1;
+
+}
+
+.input {
+  border: 1px dotted #999;
+  border-radius: 0;
+
+  -webkit-appearance: none;
+}
+
+.add-button {
+  margin-top: 20px;
+}
+
+/******************************************
+/* FORMS
+/*******************************************/
+.form input {
+box-shadow: none!important;
+border: 0;
+font-size: 2em;
+border-radius: 0;
+height: 47px;
+background-color: lighten($bg, 15%);;
+}
+
+input {
+  box-shadow: none!important;
+border: 0;
+font-size: 2em;
+border-width: 2px;
+-webkit-box-shadow: none;
+box-shadow: none;
+}
+
+.form-control {
+display: block;
+width: 100%;
+height: 34px;
+font-size: 16px;
+padding-left: 4px;
+// color when you type
+background-color: lighten($bg, 15%);;
+border: none;
+border-radius: 0;
+}
+
+.modalextra {
+  width: 500px;
+  margin: auto;
+  margin-bottom: 10px;
+
+}
+
+.modal-content {
+background-color: white;
+border-radius: 0;
+}
+
+.modal-title{
+
+}
+
+.modal-header {
+padding-top: 40px;
+padding-bottom: 0px;
+border-bottom: 0px solid #e5e5e5;
+min-height: 16.42857px;
+}
+
+
+/******************************************
+/* CIRCLE
+/*******************************************/
+
+.circle-home {
+  background: url(bg.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 1000px;
+  padding-top: 10%;
+}
+
+
+
+.circle-logo {
+  border-radius: 50%;
+  width: 500px;
+  height: 500px;
+  position: fixed;
+  -webkit-box-shadow: 6px 7px 28px -2px rgba(0,0,0,0.57);
+-moz-box-shadow: 6px 7px 28px -2px rgba(0,0,0,0.57);
+box-shadow: 6px 7px 28px -2px rgba(0,0,0,0.57);
+background-color: rgba(255,255,255, 0.9);
+margin-left: 28px;
+}
+
+.circle-logo h1 {
+  color: #d34f4f;
+  padding-top: 30%;
+  text-align: center;
+  font-size: 50px;
+  font-weight: 800;
+}
+
+
+.circle-footer {
+  padding-top: 800px;
+  background: url(../images/bg.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 1000px;
+  padding-top: 15%;
+}
+
+.circle-test {
+  color: #d34f4f;
+  font-size: 20px;
+}
+
+

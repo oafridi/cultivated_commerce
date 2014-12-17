@@ -1,0 +1,79 @@
+<li class="listing col-sm-6 row m-tb" <%="data-kind= filter-#{l.item.id}"%>>
+  <!-- FRONTSIDE -->
+  <div class="listing-front col-sm-12">
+    <div class="bg-c1 height p-tb">
+      <div class="type-icon bg-c1-light abs">
+        <p><%= image_tag l.item.category, alt: "item-category", class: "" %></p>
+        <!-- <div id="heart"></div> -->
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div>
+            <%= image_tag l.image, alt: "listing-image", class: "listing-img bg-c3 " %>
+            <a href=<%="/users/#{l.user.id}" %>>
+            <%= image_tag l.user.user_img, alt: "usr-image", class: "user-img-s bg-c4 abs" %>
+            </a>
+          </div>
+        </div>
+        <div class="col-xs-12">
+          <div>
+            <h3><%= l.title %></h3>
+            <p><%= l.description %></p>
+            <p>Quantity (aprox.): <%= l.quantity %></p>
+            <br>
+            <a class="bold small flip-to-back" href="">SHOW EXCHANGES</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BACKSIDE -->
+  <div class="listing-events col-sm-12">
+    <div class="bg-c4 height overflow p-tb">
+      <div class="row">
+        <div class="listing-event  c-w  col-xs-12">
+
+              <h3>EXCHANGES:</h3>
+              <ul>
+                <li class="exchange">
+                    <% l.user.hosted_events.each do |e| %>
+                    <!-- ADD PIN NUMBER HERE -->
+                      <h3> <%= e.title %></h3>
+                      <p><%= e.time %> on <%= e.date %></p>
+                      <p><%= e.description %></p>
+                      <p><%= e.address_line_1 %> <%= e.city %></p>
+                      <strong><%= link_to("JOIN", "/events/"+e.id.to_s+"/attend") %></strong>
+                    <% end %>
+                </li>
+              </ul>
+              <ul>
+                <ul>
+                  <li class="exchange">
+                    <% l.user.events.each do |e| %>
+                    <hr/>
+                     <!-- ADD PIN NUMBER HERE -->
+                      <h3><%= @counter %> <%= e.title %></h3>
+                      <p><%= e.time %> on <%= e.date %></p>
+                      <p><%= e.description %></p>
+                      <p><%= e.address_line_1 %> <%= e.city %></p>
+                      <strong><%= link_to("JOIN", "/events/"+e.id.to_s+"/attend") %><strong>
+                    <% end %>
+                </li>
+                <hr/>
+              </ul><br><br>
+        </div>
+        <div class="listing-event col-xs-12">
+          <br>
+        <a class="small c-w bold flip-back button" href="">RETURN</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</li>
+
+
+
+
