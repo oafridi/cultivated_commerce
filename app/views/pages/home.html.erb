@@ -1,7 +1,6 @@
 <section class="page-left map col-md-5 nopadding">
 
-
-      <!-- MAP -->
+  <!-- MAP -->
   <div class="googlemap" id="multi_markers"></div>
   <% if user_signed_in? %>
     <div class="button-d abs mapbutton">
@@ -58,7 +57,7 @@
             <%= render(@listings, as: :l, locals: {counter: @counter}) %>            
           <% else %>
           <h2 class="p-tb text-center c-c3 bold xl">
-          SORRY, NOBODY IS SHARING THIS,<br> TRY ANOTHER ONE</h2>
+          No results</h2>
           <% end %>
         </ul>
     </section>
