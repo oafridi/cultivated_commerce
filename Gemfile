@@ -39,6 +39,7 @@ group :test do
   gem 'launchy'
   gem 'selenium-webdriver'
   gem 'shoulda-matchers', require: false
+  gem 'simplecov'
 end
 
 group :development do  

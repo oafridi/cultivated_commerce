@@ -58,6 +58,7 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
+    docile (1.1.5)
     em-websocket (0.5.1)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.6.0)
@@ -200,6 +201,11 @@ GEM
     simple_form (3.1.0)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
+    simplecov (0.9.1)
+      docile (~> 1.1.0)
+      multi_json (~> 1.0)
+      simplecov-html (~> 0.8.0)
+    simplecov-html (0.8.0)
     slop (3.6.0)
     spring (1.2.0)
     spring-commands-rspec (1.0.3)
@@ -266,6 +272,7 @@ DEPENDENCIES
   selenium-webdriver
   shoulda-matchers
   simple_form
+  simplecov
   spring
   spring-commands-rspec
   turbolinks
