@@ -38,6 +38,7 @@ group :test do
   gem 'database_cleaner'
   gem 'launchy'
   gem 'selenium-webdriver'
+  gem 'rspec-collection_matchers'
   gem 'shoulda-matchers', require: false
   gem 'simplecov'
 end
