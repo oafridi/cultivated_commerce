@@ -39,10 +39,10 @@ describe User, :type => :model do
         expect(user.errors[:password]).to include("can't be blank")        
       end
 
-      it "is valid when between 8 to 128 characters" do
+      it "is valid when between 8 to 20 characters" do
         min = "1" * 8
-        mid = "1" * 64
-        max = "1" * 128
+        mid = "1" * 14
+        max = "1" * 20
         passwords = [min, mid, max]
         passwords.each do |valid_password|
           user.password = valid_password
@@ -50,8 +50,8 @@ describe User, :type => :model do
         end
       end
 
-      it 'is invalid when greater than 128 characters' do
-        user.password = 'x' * 129
+      it 'is invalid when greater than 20 characters' do
+        user.password = 'x' * 21
         user.valid?
         expect(user.errors[:password]).to include('is too long (maximum is 128 characters)')
       end
