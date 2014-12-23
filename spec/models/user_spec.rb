@@ -1,16 +1,17 @@
 require 'rails_helper'
 
 describe User, :type => :model do
+  let(:user) { build(:user) }
   describe "validations" do
+
     describe 'email' do
       it "is invalid if blank" do
-        user = build(:user, email: nil)
+        user.email = nil
         user.valid?
         expect(user.errors[:email]).to include("can't be blank")
       end
 
-      it "should accept valid values" do
-        user = build(:user, email: nil)
+      it "should accept valid values" do        
         addresses = %w[user@foo.COM A_US-ER@f.b.org frst.lst@foo.jp a+b@baz.cn]
         addresses.each do |valid_address|
           user.email = valid_address
@@ -18,9 +19,12 @@ describe User, :type => :model do
         end    
       end
 
-      it "should not accept invalid values" do
-        user1 = build(:user, email: "ooo@ooo")
-        expect(user1).not_to be_valid
+      it "should not accept invalid values" do        
+        addresses = %w[oooo@foo 123456 abcdefgh a?/ass2e3d]
+        addresses.each do |invalid_address|
+          user.email = invalid_address
+          expect(user).not_to be_valid
+        end 
       end
 
       it { should validate_uniqueness_of(:email) }
@@ -35,17 +39,41 @@ describe User, :type => :model do
         expect(user.errors[:password]).to include("can't be blank")        
       end
 
-      it 'is invalid when longer than 128 characters' do
+      it "is valid when between 8 to 128 characters" do
+        min = "1" * 8
+        mid = "1" * 64
+        max = "1" * 128
+        passwords = [min, mid, max]
+        passwords.each do |valid_password|
+          user.password = valid_password
+          expect(user).to be_valid
+        end
+      end
+
+      it 'is invalid when greater than 128 characters' do
         user.password = 'x' * 129
         user.valid?
         expect(user.errors[:password]).to include('is too long (maximum is 128 characters)')
       end
 
       it 'is invalid when shorter than 8 characters' do
-        user.password = 'x' * 4
+        user.password = 'x' * 7
         user.valid?
         expect(user.errors[:password]).to include('is too short (minimum is 8 characters)')
       end
+    end
+  end
+
+  describe "Class methods" do
+  end
+
+  describe "Instance methods" do
+    it "return a users full address as a string" do
+      expect(user.full_street_address).to eq("59 Yale Street, SF, 94134")
+    end
+
+    it "returns the geocordinates associated to a user" do      
+      expect(user.coords).to eq([user.latitude, user.longitude])
     end
   end
 
