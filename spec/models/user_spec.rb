@@ -1,7 +1,9 @@
 require 'rails_helper'
 
 describe User, :type => :model do
+  
   let(:user) { build_stubbed(:user) }
+  
   describe "validations" do
 
     describe 'email' do
@@ -31,10 +33,9 @@ describe User, :type => :model do
     end
 
     describe "password" do
-      let(:user){ build(:user) }
 
       it "is invalid if blank" do
-        user.password = nil
+        user.password = ""
         user.valid?
         expect(user.errors[:password]).to include("can't be blank")        
       end
