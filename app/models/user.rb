@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
   after_validation :geocode
 
   validates :first_name, presence: true, length: { in: 2..40 }
+  validates :last_name, presence: true, length: { in: 2..40 }
 
   def full_street_address
     "#{self.address_line_1}, #{self.city}, #{self.zipcode}"
