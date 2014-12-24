@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe User, :type => :model do
-  let(:user) { build(:user) }
+  let(:user) { build_stubbed(:user) }
   describe "validations" do
 
     describe 'email' do
@@ -53,7 +53,7 @@ describe User, :type => :model do
       it 'is invalid when greater than 20 characters' do
         user.password = 'x' * 21
         user.valid?
-        expect(user.errors[:password]).to include('is too long (maximum is 128 characters)')
+        expect(user.errors[:password]).to include('is too long (maximum is 20 characters)')
       end
 
       it 'is invalid when shorter than 8 characters' do
