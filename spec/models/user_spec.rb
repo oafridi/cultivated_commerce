@@ -1,7 +1,9 @@
 require 'rails_helper'
 
 describe User, :type => :model do
+  
   let(:user) { build_stubbed(:user) }
+  
   describe "validations" do
 
     describe 'email' do
@@ -31,10 +33,9 @@ describe User, :type => :model do
     end
 
     describe "password" do
-      let(:user){ build(:user) }
 
       it "is invalid if blank" do
-        user.password = nil
+        user.password = ""
         user.valid?
         expect(user.errors[:password]).to include("can't be blank")        
       end
@@ -61,15 +62,45 @@ describe User, :type => :model do
         user.valid?
         expect(user.errors[:password]).to include('is too short (minimum is 8 characters)')
       end
-    end
-  end
 
-  describe "Class methods" do
+
+    end
+
+    describe "first_name" do     
+      it "is invalid when blank" do
+        user.first_name = ""
+        user.valid?
+        expect(user.errors[:first_name]).to include("can't be blank")
+      end
+
+      it "is invalid when less than 2 characters" do
+        user.first_name = "a"
+        user.valid?
+        expect(user.errors[:first_name]).to include('is too short (minimum is 2 characters)')        
+      end
+
+      it "is invalid when greater than 40 characters" do
+        user.first_name = "a" * 41      
+        user.valid?
+        expect(user.errors[:first_name]).to include('is too long (maximum is 40 characters)')
+      end
+
+      it "is valid when between 2 to 40 characters" do
+        min = "a" * 2
+        mid = "a" * 21
+        max = "a" * 40
+
+        [min,mid,max].each do |valid_name|
+          user.first_name = valid_name
+          expect(user).to be_valid
+        end
+      end
+    end    
   end
 
   describe "Instance methods" do
     it "return a users full address as a string" do
-      expect(user.full_street_address).to eq("59 Yale Street, SF, 94134")
+      expect(user.full_street_address).to eq("#{user.address_line_1}, #{user.city}, #{user.zipcode}")
     end
 
     it "returns the geocordinates associated to a user" do      
