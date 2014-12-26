@@ -7,7 +7,7 @@ FactoryGirl.define do
     latitude Faker::Address.latitude.to_f
     longitude Faker::Address.longitude.to_f
     date = (0..200).to_a.sample.days.ago
-    title Faker::
-    description Faker::
+    title Faker::Lorem.words(num = 3, supplemental = false)
+    description Faker::Lorem.sentences(sentence_count = 3, supplemental = false)
   end
 end
