@@ -62,8 +62,7 @@ describe User, :type => :model do
         user.valid?
         expect(user.errors[:password]).to include('is too short (minimum is 8 characters)')
       end
-
-
+      
     end
 
     describe "first_name" do     
@@ -143,7 +142,7 @@ describe User, :type => :model do
   end
 
   it "is valid with valid parameters" do
-    expect(build(:user)).to be_valid
+    expect(build_stubbed(:user)).to be_valid
   end  
  
 end
