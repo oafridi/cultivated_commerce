@@ -10,6 +10,15 @@ class Event < ActiveRecord::Base
   end
   reverse_geocoded_by :latitude, :longitude
 
+  validates :title, presence: true, length: { in: 3..30 }
+  validates :address_line_1, presence: true, length: { in: 7..70 }
+  validates :city, presence: true, length: { in: 3..50 }
+  validates :zipcode, presence: true
+  validates :state, presence: true, format: { with: /\A[a-zA-Z]+\z/,
+                                    message: "only allows letters" }
+  validates :date, presence: true
+  validates :description, presence: true
+
   has_many :events_participants
   has_many :events_hosts
 
