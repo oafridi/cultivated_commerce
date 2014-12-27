@@ -11,17 +11,20 @@ class User < ActiveRecord::Base
   has_many :events, through: :events_participants
   has_many :hosted_events, through: :events_hosts, source: :event
 
-  geocoded_by :full_street_address
-  after_validation :geocode
+  geocoded_by :address
+  
+  unless Rails.env.test?
+    after_validation :geocode, if: :address_changed?
+  end
 
   validates :first_name, presence: true, length: { in: 2..40 }
   validates :last_name, presence: true, length: { in: 2..40 }
 
-  def full_street_address
+  def address
     "#{self.address_line_1}, #{self.city}, #{self.zipcode}"
   end
 
-  def coords
+  def coordinates
     [self.latitude.to_f, self.longitude.to_f]
   end
 

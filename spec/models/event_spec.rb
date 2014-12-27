@@ -4,20 +4,23 @@ describe Event, :type => :model do
   let(:event) { build_stubbed(:event) }
 
   describe "validations" do
+    describe "title" do
+      # it "is invalid when greater"
+    end
   end
 
-  describe "Instance methods" do
+  describe "instance methods" do
     
-    it "return a events full address as a string" do
-      expect(event.full_street_address).to eq("#{event.address_line_1}, #{event.city}, #{event.zipcode}")
+    it "return an events full address as a string" do
+      expect(event.address).to eq("#{event.address_line_1}, #{event.city}, #{event.zipcode}")
     end
 
-    it "returns the geocordinates associated to a event" do      
-      expect(event.coords).to eq([event.latitude, event.longitude])
+    it "returns the geocordinates associated to an event" do      
+      expect(event.coordinates).to eq([event.latitude, event.longitude])
     end
   end
 
   it "is valid with valid parameters" do
-    expect(build_stubbed(:event)).to be_valid
-  end  
+    expect(event).to be_valid
+  end
 end
