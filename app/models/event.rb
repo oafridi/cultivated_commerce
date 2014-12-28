@@ -9,16 +9,17 @@ class Event < ActiveRecord::Base
     after_validation :geocode,
   :if => lambda{ |obj| obj.address_changed? }
   end
+
   reverse_geocoded_by :latitude, :longitude
 
   validates :title, presence: true, length: { in: 3..30 }
   validates :address_line_1, presence: true, length: { in: 7..70 }
   validates :city, presence: true, length: { in: 3..50 }
   validates :zipcode, presence: true
-  validates :state, presence: true, format: { with: /\A[a-zA-Z]+\z/,
-                                    message: "only allows letters" }
+  validates :state, presence: true, format: { with: /\A[a-zA-Z]{2}\z/,
+                                    message: "must be a valid two-letter abbreviation" }
   validates :date, presence: true
-  validates :description, presence: true, length: { in: 8..300 }
+  validates :description, presence: true, length: { in: 10..300 }
 
   has_many :events_participants
   has_many :events_hosts

@@ -3,6 +3,10 @@ require 'rails_helper'
 describe Event, :type => :model do
   let(:event) { build_stubbed(:event) }
 
+  it "is valid with valid parameters" do
+    expect(event).to be_valid
+  end
+
   describe "validations" do
     
     describe "title" do
@@ -32,7 +36,7 @@ describe Event, :type => :model do
 
         [min, mid, max].each do |valid_title|
           event.title = valid_title
-          expect(event).to be_valid
+          expect(event.errors[:title]).to be_empty
         end
       end
 
@@ -98,12 +102,22 @@ describe Event, :type => :model do
         event.state = ""
         event.valid?
         expect(event.errors[:state]).to include("can't be blank")
-      end
+      end      
       
-      it "is valid when it contains alphabetic characters only" do
+      it "is valid when it is a two letter abbreviation" do
         event.state = "CA"
         event.valid?
         expect(event.errors[:state]).to be_empty
+      end
+
+      it "is invalid when length of the string isn't two" do
+
+        [1, 3, 0].each do |invalid_length|
+          event.state = "a" * invalid_length
+          event.valid?
+          expect(event.errors[:state]).to include("must be a valid two-letter abbreviation")
+        end
+        
       end
       
       it "is invalid when it contains non alphabetic characters" do
@@ -111,7 +125,7 @@ describe Event, :type => :model do
         invalid_states.each do |invalid_state|
           event.state = invalid_state
           event.valid?
-          expect(event.errors[:state]).to include("only allows letters")
+          expect(event.errors[:state]).to include("must be a valid two-letter abbreviation")
         end
       end 
     end
@@ -124,23 +138,28 @@ describe Event, :type => :model do
         expect(event.errors[:date]).to include("can't be blank")
       end
 
-      it "is valid when properly formed"
-      it "is invalid when improperly formed"
-    end
-
-    describe "time" do
-      it "is valid when given a valid time"
-      it "is invalid when in the past"
-    end
+    end    
 
     describe "description" do
+
       it "is invalid when blank" do
         event.description = ""
         event.valid?
         expect(event.errors[:description]).to include("can't be blank")
       end
 
-      it "is invalid when greater than 300 characters"
+      it "is invalid when greater than 300 characters" do
+        event.description = "1" * 301
+        event.valid?
+        expect(event.errors[:description]).to include('is too long (maximum is 300 characters)')
+      end
+
+      it "is invalid when less than 10 characters" do
+        event.description = "1" * 9
+        event.valid?
+        expect(event.errors[:description]).to include('is too short (minimum is 10 characters)')
+      end
+
     end
 
   end
@@ -156,7 +175,5 @@ describe Event, :type => :model do
     end
   end
 
-  it "is valid with valid parameters" do
-    expect(event).to be_valid
-  end
+  
 end
