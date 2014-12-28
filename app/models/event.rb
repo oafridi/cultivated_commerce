@@ -6,7 +6,8 @@ class Event < ActiveRecord::Base
   geocoded_by :address
   
   unless Rails.env.test?
-    after_validation :geocode, if: self.address_changed?
+    after_validation :geocode,
+  :if => lambda{ |obj| obj.address_changed? }
   end
   reverse_geocoded_by :latitude, :longitude
 
@@ -17,7 +18,7 @@ class Event < ActiveRecord::Base
   validates :state, presence: true, format: { with: /\A[a-zA-Z]+\z/,
                                     message: "only allows letters" }
   validates :date, presence: true
-  validates :description, presence: true
+  validates :description, presence: true, length: { in: 8..300 }
 
   has_many :events_participants
   has_many :events_hosts
@@ -27,6 +28,10 @@ class Event < ActiveRecord::Base
 
   def address
     "#{self.address_line_1}, #{self.city}, #{self.zipcode}"
+  end
+
+  def address_changed?
+    (self.address_line_1.changed? || self.city.changed? || self.zipcode.changed?)
   end
 
   def coordinates
