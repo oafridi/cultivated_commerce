@@ -133,11 +133,11 @@ describe User, :type => :model do
   describe "Instance methods" do
     
     it "return a users full address as a string" do
-      expect(user.full_street_address).to eq("#{user.address_line_1}, #{user.city}, #{user.zipcode}")
+      expect(user.address).to eq("#{user.address_line_1}, #{user.city}, #{user.zipcode}")
     end
 
     it "returns the geocordinates associated to a user" do      
-      expect(user.coords).to eq([user.latitude, user.longitude])
+      expect(user.coordinates).to eq([user.latitude, user.longitude])
     end
   end
 
