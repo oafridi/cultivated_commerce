@@ -7,7 +7,7 @@ class Event < ActiveRecord::Base
   
   unless Rails.env.test?
     after_validation :geocode,
-  :if => lambda{ |obj| obj.address_changed? }
+  :if => lambda{ |obj| obj.address.present? and obj.address_changed? }
   end
 
   reverse_geocoded_by :latitude, :longitude
@@ -28,11 +28,19 @@ class Event < ActiveRecord::Base
   has_many :hosts, class_name: "User", through: :events_hosts
 
   def address
-    "#{self.address_line_1}, #{self.city}, #{self.zipcode}"
+    if self.address_line_1 && self.city && self.zipcode
+      "#{self.address_line_1}, #{self.city}, #{self.zipcode}" 
+    else
+      nil
+    end
   end
 
   def address_changed?
-    (self.address_line_1.changed? || self.city.changed? || self.zipcode.changed?)
+    if self.address_line_1 && self.city && self.zipcode    
+      (self.address_line_1_changed? || self.city_changed? || self.zipcode_changed?)
+    else
+      false
+    end
   end
 
   def coordinates
