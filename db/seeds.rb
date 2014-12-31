@@ -1,5 +1,3 @@
-case Rails.env
-when "development"
   v1 = User.create(first_name:'Bob', last_name:'Marley', user_name:'chrisb', email:'bobmarley@gmail.com',
                    address_line_1:'277A Duncan st.', zipcode:'94131', about:'I play sax', phone:'555-717-5555', private_contact: true, 
                    user_img:'chris.jpg', password:'12345678', password_confirmation:'12345678')
@@ -15,7 +13,8 @@ when "development"
   v4 = User.create(first_name:'Bob', last_name:'Marley', user_name:'vv', email: 'janetjackson@gmail.com',
                    address_line_1:'', zipcode:'94131', about:'fun loving', phone:'555-555-5555', private_contact: true, 
                    user_img:"murat.jpg", password:'12345678', password_confirmation:'12345678')
-
+  case Rails.env
+  when "development"
   10.times do
     User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, 
                 user_name:Faker::Internet.user_name, email: Faker::Internet.email, 
@@ -25,6 +24,7 @@ when "development"
                 password_confirmation:'12345678')
 
   end
+  
   produce = Item.create(kind:'Produce', category:'i-produce.svg')
   eggsdairy = Item.create(kind:'Eggs and Dairy', category:'i-eggs_dairy.svg')
   meatfish = Item.create(kind:'Meat and Fish', category:'i-meat_fish.svg')
@@ -67,11 +67,9 @@ when "development"
   EventsParticipant.create(participant_id:1, event_id:6)
   EventsParticipant.create(participant_id:2, event_id:6)
    
-when "production"
   produce = Item.create(kind:'Produce', category:'i-produce.svg')
   eggsdairy = Item.create(kind:'Eggs and Dairy', category:'i-eggs_dairy.svg')
   meatfish = Item.create(kind:'Meat and Fish', category:'i-meat_fish.svg')
   bakedgoods = Item.create(kind:'Baked Goods', category:'i-bakery.svg')
   pantry = Item.create(kind:'Pantry', category:'i-pantry.svg')
   herbsspices = Item.create(kind:'Herbs and Spices', category:'i-herbs_spices.svg')   
-end
