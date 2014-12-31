@@ -15,16 +15,16 @@
                    user_img:"murat.jpg", password:'12345678', password_confirmation:'12345678')
   case Rails.env
   when "development"
-  10.times do
-    User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, 
-                user_name:Faker::Internet.user_name, email: Faker::Internet.email, 
-                address_line_1: Faker::Address.street_name, zipcode: Faker::Address.zip_code, 
-                about: Faker::Lorem.sentence, phone:Faker::PhoneNumber.phone_number, 
-                private_contact: false, user_img: "user2" ,password:'12345678',
-                password_confirmation:'12345678')
-
+    10.times do
+      User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, 
+                  user_name:Faker::Internet.user_name, email: Faker::Internet.email, 
+                  address_line_1: Faker::Address.street_name, zipcode: Faker::Address.zip_code, 
+                  about: Faker::Lorem.sentence, phone:Faker::PhoneNumber.phone_number, 
+                  private_contact: false, user_img: "user2" ,password:'12345678',
+                  password_confirmation:'12345678')
+    end
   end
-  
+
   produce = Item.create(kind:'Produce', category:'i-produce.svg')
   eggsdairy = Item.create(kind:'Eggs and Dairy', category:'i-eggs_dairy.svg')
   meatfish = Item.create(kind:'Meat and Fish', category:'i-meat_fish.svg')
