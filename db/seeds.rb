@@ -66,10 +66,3 @@
   EventsParticipant.create(participant_id:6, event_id:6)
   EventsParticipant.create(participant_id:1, event_id:6)
   EventsParticipant.create(participant_id:2, event_id:6)
-   
-  produce = Item.create(kind:'Produce', category:'i-produce.svg')
-  eggsdairy = Item.create(kind:'Eggs and Dairy', category:'i-eggs_dairy.svg')
-  meatfish = Item.create(kind:'Meat and Fish', category:'i-meat_fish.svg')
-  bakedgoods = Item.create(kind:'Baked Goods', category:'i-bakery.svg')
-  pantry = Item.create(kind:'Pantry', category:'i-pantry.svg')
-  herbsspices = Item.create(kind:'Herbs and Spices', category:'i-herbs_spices.svg')   
