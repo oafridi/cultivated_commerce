@@ -8,9 +8,7 @@ describe Event, :type => :model do
   end
 
   describe "validations" do
-    
     describe "title" do
-
       it "is invalid when blank" do
         event.title = ""
         event.valid?
@@ -39,11 +37,9 @@ describe Event, :type => :model do
           expect(event.errors[:title]).to be_empty
         end
       end
-
     end
     
     describe "address_line_1" do
-      
       it "is invalid when blank" do
         event.address_line_1 = ""
         event.valid?
@@ -61,11 +57,9 @@ describe Event, :type => :model do
         event.valid?
         expect(event.errors[:address_line_1]).to include('is too short (minimum is 7 characters)')
       end
-
     end
 
     describe "city" do
-
       it "is invalid when blank" do
         event.city = ""
         event.valid?
@@ -83,21 +77,17 @@ describe Event, :type => :model do
         event.valid?
         expect(event.errors[:city]).to include('is too short (minimum is 3 characters)')
       end
-
     end
 
     describe "zipcode" do
-      
       it "is invalid when blank" do
         event.zipcode = ""
         event.valid?
         expect(event.errors[:zipcode]).to include("can't be blank")
       end
-
     end
 
     describe "state" do
-      
       it "is invalid when blank" do
         event.state = ""
         event.valid?
@@ -111,13 +101,11 @@ describe Event, :type => :model do
       end
 
       it "is invalid when length of the string isn't two" do
-
         [1, 3, 0].each do |invalid_length|
           event.state = "a" * invalid_length
           event.valid?
           expect(event.errors[:state]).to include("must be a valid two-letter abbreviation")
         end
-        
       end
       
       it "is invalid when it contains non alphabetic characters" do
@@ -131,17 +119,14 @@ describe Event, :type => :model do
     end
 
     describe "date" do
-
       it "is invalid when blank" do
         event.date = ""
         event.valid?
         expect(event.errors[:date]).to include("can't be blank")
       end
-
     end    
 
     describe "description" do
-
       it "is invalid when blank" do
         event.description = ""
         event.valid?
@@ -159,21 +144,40 @@ describe Event, :type => :model do
         event.valid?
         expect(event.errors[:description]).to include('is too short (minimum is 10 characters)')
       end
-
     end
-
   end
 
   describe "instance methods" do
-    
-    it "return an events full address as a string" do
-      expect(event.address).to eq("#{event.address_line_1}, #{event.city}, #{event.zipcode}")
+    describe "#address" do
+      it "return an events full address as a string" do
+        expect(event.address).to eq("#{event.address_line_1}, #{event.city}, #{event.zipcode}")
+      end
     end
 
-    it "returns the geocordinates associated to an event" do      
-      expect(event.coordinates).to eq([event.latitude, event.longitude])
+    describe "#coordinates" do
+      it "returns the geocordinates associated to an event" do      
+        expect(event.coordinates).to eq([event.latitude, event.longitude])
+      end
+    end
+
+    describe "#address_changed?" do
+      it "returns true if address_line_1, city or zipcode changes" do        
+        create(:event)
+        event = Event.last        
+        event.address_line_1 = "59 test suite"
+        expect(event.address_changed?).to be_truthy
+      end
+
+      it "returns false if address_line_1, city or zipcode do not change" do
+        create(:event)
+        event = Event.last
+        expect(event.address_changed?).to be_falsey
+      end
+
+      it "returns false if address data is not provided" do
+        event = build_stubbed(:event, address_line_1: nil, city: nil, zipcode: nil)
+        expect(event.address_changed?).to be_falsey
+      end
     end
   end
-
-  
 end
