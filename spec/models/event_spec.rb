@@ -161,18 +161,21 @@ describe Event, :type => :model do
     end
 
     describe "#address_changed?" do
-      before(:each) do
-        create(:event)
-      end
-
       it "returns true if address_line_1, city or zipcode changes" do        
+        create(:event)
         event = Event.last        
         event.address_line_1 = "59 test suite"
         expect(event.address_changed?).to be_truthy
       end
 
       it "returns false if address_line_1, city or zipcode do not change" do
+        create(:event)
         event = Event.last
+        expect(event.address_changed?).to be_falsey
+      end
+
+      it "returns false if address data is not provided" do
+        event = build_stubbed(:event, address_line_1: nil, city: nil, zipcode: nil)
         expect(event.address_changed?).to be_falsey
       end
     end

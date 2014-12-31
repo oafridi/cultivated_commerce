@@ -6,8 +6,7 @@ class Event < ActiveRecord::Base
   geocoded_by :address
   
   unless Rails.env.test?
-    after_validation :geocode,
-  :if => lambda{ |obj| obj.address.present? and obj.address_changed? }
+    after_validation :geocode, :if => lambda{ |obj| obj.address.present? and obj.address_changed? }
   end
 
   reverse_geocoded_by :latitude, :longitude

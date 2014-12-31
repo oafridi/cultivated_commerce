@@ -1,11 +1,9 @@
 require 'rails_helper'
 
-describe User, :type => :model do
-  
+describe User, :type => :model do  
   let(:user) { build_stubbed(:user) }
   
   describe "validations" do
-
     describe 'email' do
       it "is invalid if blank" do
         user.email = nil
@@ -28,12 +26,10 @@ describe User, :type => :model do
           expect(user).not_to be_valid
         end 
       end
-
       it { should validate_uniqueness_of(:email) }
     end
 
     describe "password" do
-
       it "is invalid if blank" do
         user.password = ""
         user.valid?
@@ -131,7 +127,6 @@ describe User, :type => :model do
   end
 
   describe "Instance methods" do
-    
     it "return a users full address as a string" do
       expect(user.address).to eq("#{user.address_line_1}, #{user.city}, #{user.zipcode}")
     end
@@ -144,5 +139,4 @@ describe User, :type => :model do
   it "is valid with valid parameters" do
     expect(build_stubbed(:user)).to be_valid
   end  
- 
 end
