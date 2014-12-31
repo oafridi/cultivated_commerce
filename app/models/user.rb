@@ -24,6 +24,14 @@ class User < ActiveRecord::Base
     "#{self.address_line_1}, #{self.city}, #{self.zipcode}"
   end
 
+  def address_changed?
+    if self.address_line_1 && self.city && self.zipcode    
+      (self.address_line_1_changed? || self.city_changed? || self.zipcode_changed?)
+    else
+      false
+    end
+  end
+
   def coordinates
     [self.latitude.to_f, self.longitude.to_f]
   end
