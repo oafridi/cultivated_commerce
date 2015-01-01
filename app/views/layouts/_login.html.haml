@@ -1,0 +1,22 @@
+.modal.fade#myLogin{"tabindex" => "-1", "role" => "dialog", "aria-labelledby" => "myModalLabel", "aria-hidden" => "true" }
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button{ "type" => "button", "class" => "close", "data-dismiss" => "modal" }
+          %span{ "aria-hidden" => "true" } &times;
+          %span.sr-only Close
+        %h2.modal-title.bold.c-c4.modalextra.nopadding#myModalLabel LOGIN
+      .modal-body
+        = form_for(:user, :url => session_path(:user), class: "form") do |f|
+          .field
+            = f.label :email 
+            %br
+            = f.email_field :email, class: "form-control"
+          .field
+            = f.label :password
+            - if @validatable
+              %em = @minimum_password_length characters minimum
+            %br
+            = f.password_field :password, autocomplete: "off", class: "form-control"
+          .actions
+            = f.submit "Login", class: "button m-tb"
