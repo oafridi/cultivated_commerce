@@ -31,8 +31,7 @@
                 %br
                   = link_to "logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'
             - else
-              %a{"data-target" => "#mySignup", "data-toggle" => "modal", :href => ""} Sign up 
-              \|
+              %a{"data-target" => "#mySignup", "data-toggle" => "modal", :href => ""} Sign up |
               %a{"data-target" => "#myLogin", "data-toggle" => "modal", :href => ""} Login
     / Login modal
     = render "layouts/login"
