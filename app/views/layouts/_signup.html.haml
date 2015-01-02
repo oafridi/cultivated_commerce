@@ -13,13 +13,13 @@
         = form_for(:user, :url => registration_path(:user), class: "form") do |f|
           .field
             = f.label :first_name
-            = f.text_field :first_name , class: "form-control"
+            = f.text_field :first_name , class: "form-control", required: true
           .field
             = f.label :last_name
             = f.text_field :last_name , class: "form-control"
           .field
             = f.label :email
-            = f.email_field :email, class: "form-control", id: "js-email-signup", required: true          
+            = f.email_field :email, class: "form-control", id: "js-email-signup", required: true
           .field
             = f.label :address
             = f.text_field :address_line_1, class: "form-control"
@@ -37,9 +37,9 @@
             - if @validatable
               %em
                 (#{@minimum_password_length} characters minimum)
-            = f.password_field :password, autocomplete: "off", class: "form-control", id: "js-password-signup"
+            = f.password_field :password, autocomplete: "off", class: "form-control", required: true, id: "js-password-signup"
           .field
             = f.label :password_confirmation
-            = f.password_field :password_confirmation, autocomplete: "off", class: "form-control", id: "js-password-confirmation-signup"
+            = f.password_field :password_confirmation, autocomplete: "off", class: "form-control", required: true, id: "js-password-confirmation-signup"
           .actions
             = f.submit "Sign up", class: "button-d m-tb"
