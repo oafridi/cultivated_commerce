@@ -10,20 +10,28 @@ feature 'Visitor signs up' do
     expect(page).to have_content("logout")
   end
 
-  scenario "with invalid email" do
+  scenario "with blank email" do
     user.email = ""
     sign_up_with(user)
     expect(page).to have_content("Email can't be blank")
+  end
 
+  scenario "with invalid email" do    
     user.email = "oooo@oooo"
     sign_up_with(user)
     expect(page).to have_content("Email is invalid")
   end
 
-  scenario "with invalid password" do
+  scenario "with blank password" do
     user.password = ""
     sign_up_with(user)
-    expect(page).to have_content("Password can't be blank")
+    expect(page).to have_content("Password can't be blank") 
+  end
+
+  scenario "with invalid password" do
+    user.password = "1234"
+    sign_up_with(user)
+    expect(page).to have_content("Password is too short (minimum is 8 characters)")
   end
 
 end
