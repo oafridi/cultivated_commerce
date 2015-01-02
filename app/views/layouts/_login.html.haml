@@ -11,12 +11,12 @@
           .field
             = f.label :email 
             %br
-            = f.email_field :email, class: "form-control"
+            = f.email_field :email, class: "form-control", required: true
           .field
             = f.label :password
             - if @validatable
               %em = @minimum_password_length characters minimum
             %br
-            = f.password_field :password, autocomplete: "off", class: "form-control"
+            = f.password_field :password, autocomplete: "off", required: true, class: "form-control"
           .actions
             = f.submit "Login", class: "button m-tb"
