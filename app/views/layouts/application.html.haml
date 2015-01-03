@@ -16,9 +16,7 @@
       .row
         .col-md-5
           %a{:href => "/"}
-            %h1.bold.logo cultivated commerce
-        / edit profile button
-        / <button type="button" class="button" data-toggle="modal" data-target="#myEditprofile">Edit Profile</button>
+            %h1.bold.logo cultivated commerce        
         .col-md-7.pull-right
           %p.navbar-text.pull-right
             - if user_signed_in?
@@ -34,11 +32,12 @@
               %a{"data-target" => "#mySignup", "data-toggle" => "modal", :href => ""} Sign up 
               |
               %a{"data-target" => "#myLogin", "data-toggle" => "modal", :href => ""} Login
-    / Login modal
-    = render "layouts/login"
-    / Sign in modal
-    = render "layouts/signup"
-    = render "layouts/messages"    
+    = if !user_signed_in?
+      / Login modal
+      = render "layouts/login"
+      / Sign in modal
+      = render "layouts/signup"
+      = render "layouts/messages"
     .container-fluid.nopadding
       .col-md-12.nopadding
         = yield
