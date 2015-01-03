@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :item do
-    name "MyString"
+    kind "Produce"
+    category "i-produce.svg"
   end
-
 end

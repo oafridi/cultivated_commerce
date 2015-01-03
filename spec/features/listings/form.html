@@ -1,0 +1,22 @@
+<form accept-charset="UTF-8" action="/listings" class="simple_form new_listing" id="new_listing" method="post" novalidate="novalidate">
+    <div style="display:none">
+        <input name="utf8" type="hidden" value="&#x2713;" />
+        <input name="authenticity_token" type="hidden" value="poyjqk2Rv1klKSRoaNUfpKd6SPAjYerNESh62QWSprE=" />
+    </div>
+    
+    <div class="form-group string required listing_title">
+        <label class="string required control-label" for="listing_title">
+            <abbr title="required">*</abbr> Title</label>
+        <input class="string required form-control" id="listing_title" name="listing[title]" type="text" />
+    </div>
+    
+    <div class="form-group string required listing_description">
+        <label class="string required control-label" for="listing_description">
+            <abbr title="required">*</abbr> Description</label>
+        <input class="string required form-control" id="listing_description" name="listing[description]" type="text" />
+    </div>
+    
+    <div class="form-group string optional listing_quantity">
+        <label class="string optional control-label" for="listing_quantity">Quantity</label>
+        <input class="string optional form-control" id="listing_quantity" name="listing[quantity]" type="text" />
+    </div>
