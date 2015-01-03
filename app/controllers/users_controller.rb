@@ -10,15 +10,6 @@ class UsersController < ApplicationController
     @items= Item.all
   end
 
-  def edit
-    @user = User.find_by(id: params[:id])
-    if @user
-      render 'edit'
-    else
-      redirect_to edit_event_path
-    end
-  end
-
   def create
     @user = User.find_by(id: params[:id])
     if @user.update(update_params)

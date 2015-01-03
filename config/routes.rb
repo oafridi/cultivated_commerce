@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get 'events/:id/cancel' => 'events#cancel'
   get 'events/:id/attend' => 'events#attend'
 
-  resources :users
+  resources :users, only: [:show]
   resources :events
   resources :listings
 
