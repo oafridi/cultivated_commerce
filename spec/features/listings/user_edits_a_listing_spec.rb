@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature "delete a listing" do
+feature "edit an existing listing" do
   before do
     @user = create(:user)
     item = build(:item)
@@ -8,13 +8,15 @@ feature "delete a listing" do
     item.listings << @listing
     @listing.save
     @user.listings << @listing
-    sign_in_with @user    
+    sign_in_with @user
   end
   
-  scenario "as logged in user" do
+  scenario "update description" do
     visit users_path
     expect(page).to have_content(@listing.description)
-    click_link 'Delete'
-    expect(page).not_to have_content(@listing.description)    
+    click_link 'Edit me'
+    fill_in 'Description', with: 'Feature test description'
+    click_button 'Update Listing'
+    expect(page).to have_content('Feature test description') 
   end
 end
