@@ -5,12 +5,15 @@ Warden.test_mode!
 feature "delete a listing" do
   before do
     @user = create(:user)
-    @listing = create(:listing)
+    item = build(:item)
+    @listing = build(:listing)
+    item.listings << @listing
+    @listing.save
     @user.listings << @listing
     sign_in_with @user    
   end
   
-  scenario "" do
+  scenario "as logged in user" do
     visit users_path
     expect(page).to have_content(@listing.description)
   end
