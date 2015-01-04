@@ -16,5 +16,8 @@ feature "delete a listing" do
   scenario "as logged in user" do
     visit users_path
     expect(page).to have_content(@listing.description)
+    click_link 'Delete'
+    expect(page).not_to have_content(@listing.description)    
+    save_and_open_page
   end
 end
