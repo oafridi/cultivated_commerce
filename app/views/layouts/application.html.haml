@@ -32,7 +32,7 @@
               %a{"data-target" => "#mySignup", "data-toggle" => "modal", :href => ""} Sign up 
               |
               %a{"data-target" => "#myLogin", "data-toggle" => "modal", :href => ""} Login
-    = if !user_signed_in?
+    - if !user_signed_in?
       / Login modal
       = render "layouts/login"
       / Sign in modal
