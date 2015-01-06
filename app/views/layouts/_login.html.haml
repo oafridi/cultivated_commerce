@@ -8,7 +8,7 @@
         %h2.modal-title.bold.c-c4.modalextra.nopadding#myModalLabel LOGIN
       .modal-body
         = simple_form_for(:user, :url => session_path(:user), html: { class: "" }) do |f|
-          = f.input :email
+          = f.input :email, input_html: { id: 'js-email-login' }
           - if @validatable
             %em = @minimum_password_length characters minimum
           = f.input :password          

@@ -3,7 +3,7 @@ module AuthenticationHelpers
   def sign_in_with(user)
     visit root_path
     click_link 'Login'
-    fill_in 'Email', with: user.email
+    find('#js-email-login').set(user.email)
     fill_in 'user_password', with: user.password
     click_button 'Login'
   end
