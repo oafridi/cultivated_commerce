@@ -7,16 +7,9 @@
           %span.sr-only Close
         %h2.modal-title.bold.c-c4.modalextra.nopadding#myModalLabel LOGIN
       .modal-body
-        = form_for(:user, :url => session_path(:user), class: "form") do |f|
-          .field
-            = f.label :email 
-            %br
-            = f.email_field :email, class: "form-control", required: true
-          .field
-            = f.label :password
-            - if @validatable
-              %em = @minimum_password_length characters minimum
-            %br
-            = f.password_field :password, autocomplete: "off", required: true, class: "form-control"
-          .actions
-            = f.submit "Login", class: "button m-tb"
+        = simple_form_for(:user, :url => session_path(:user), html: { class: "" }) do |f|
+          = f.input :email
+          - if @validatable
+            %em = @minimum_password_length characters minimum
+          = f.input :password          
+          = f.button :submit, "Login"

@@ -61,7 +61,7 @@ SimpleForm.setup do |config|
   config.boolean_style = :nested
 
   # Default class for buttons
-  config.button_class = 'btn'
+  config.button_class = 'button m-tb'
   config.input_class = "form-control"
 
   # Method used to tidy up errors. Specify any Rails Array method.

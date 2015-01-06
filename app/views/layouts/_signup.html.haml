@@ -10,7 +10,7 @@
         %p{:style => "c-c4 small;"}
           You need to sign up before adding an exchange
       .modal-body
-        = simple_form_for(:user, url: registration_path(:user), input_html: { class: "" }) do |f|
+        = simple_form_for(:user, url: registration_path(:user), html: { class: "" }) do |f|
           = f.input :first_name
           = f.input :last_name
           = f.input :email, placeholder: "user@domain.com", input_html: { id: 'js-email-signup' }
@@ -24,4 +24,4 @@
           = f.input :password, input_html: { id: "js-password-signup" }
           = f.input :password_confirmation, input_html: { id: "js-password-confirmation-signup" }
           .actions
-            = f.button :submit, "Sign up", class: "button-d m-tb"
+            = f.button :submit, "Sign up"
