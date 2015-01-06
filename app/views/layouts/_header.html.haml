@@ -1,0 +1,25 @@
+.row.headerline.nopadding
+%header.container-fluid.bg-c1
+  .row
+    .col-md-5          
+      %a{href: "/"}
+        %h1.bold.logo cultivated commerce        
+    .col-md-7.pull-right
+      %p.navbar-text.pull-right
+        - if user_signed_in?
+          .userinfo2.pull-right.text-center
+            <a href=#{"/users/#{current_user.id}"}>
+            \#{image_tag current_user.user_img, alt: "usr-image", class: "user-img-xs bg-c4"}
+          .userinfo1.pull-right.text-center
+            <a href=#{"/users/#{current_user.id}"}>
+            %strong= current_user.first_name
+            %br
+              = link_to "logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'
+        - else
+          %a{"data-target" => "#mySignup", "data-toggle" => "modal", href: ""} Sign up
+          |
+          %a{"data-target" => "#myLogin", "data-toggle" => "modal", href: ""} Login
+          = render "layouts/login"
+          = render "layouts/signup"
+    
+        = render "layouts/messages"
