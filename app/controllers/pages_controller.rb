@@ -32,9 +32,7 @@ class PagesController < ApplicationController
       users = @listings.map { |l| l.user }
       events_unsorted = users.map { |u| u.events }.uniq.flatten
       @events = sort_events(events_unsorted)
-
       
-      # @hash_user = current_user.to_gmaps4rails
       @hash = Gmaps4rails.build_markers(@events) do |event, marker|
         counter +=1        
         event.counter = counter
@@ -56,8 +54,6 @@ class PagesController < ApplicationController
         :width   => 32,
         :height  => 32
         })
-        # HOUSE HERE
-
       end
       @hash.push(
         {:lat=> current_user.latitude,
