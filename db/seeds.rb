@@ -52,14 +52,42 @@ v4.listings.create(title:'Honey', item_id: pantry.id, description:'I have a smal
 v4.listings.create(title:'Honey',item_id: pantry.id, description:'I have a small behive up north and I bring back honey to trade.',desired:'Oranges',quantity:'30 jars',image:"honey6.jpg",active:true)
 v4.listings.create(title:'Avocados', item_id: produce.id, description:'Haas avocados',desired:'Eggs',quantity:'40',image:"avocado.jpg",active:true)
 
-users.each do |user|
-  3.times do
-    user.events.create(address_line_1: Faker::Address.street_name, zipcode: Faker::Address.zip_code, 
-      city: Faker::Address.city, date:Faker::Date.forward(30), time:'9am - 1pm',
-      title:Faker::Lorem.word, description:Faker::Lorem.sentence, 
-      image:'', state:Faker::Address.state_abbr)
-  end
-end
+# users.each do |user|
+#   3.times do
+#     user.events.create(address_line_1: Faker::Address.street_name, zipcode: Faker::Address.zip_code, 
+#       city: Faker::Address.city, date:Faker::Date.forward(30), time:'9am - 1pm',
+#       title:Faker::Lorem.word, description:Faker::Lorem.sentence, 
+#       image:'', state:Faker::Address.state_abbr)
+#   end
+# end
+
+v1.events.create(address_line_1:'590 Dolores St', city: 'San Francisco',
+                 zipcode:'94110', date:Faker::Date.forward(30), time:'9am - 1pm', 
+                 title:'Delores Park exchange', description:'', image:'', state: "CA")
+
+v1.events.create(address_line_1:'1089 Fulton St', city: 'San Francisco', 
+                 zipcode:'94117', date:Faker::Date.forward(30), time:'9am - 1pm',
+                 title:'Alamo Square Park exchange', 
+                 description:'I will be setting up a table and canopy.  Join in if you want.', 
+                 image:'', state: "CA")
+
+v2.events.create(address_line_1:'2490 Folsom St', city: 'San Francisco', 
+                 zipcode:'94110', date:Faker::Date.forward(30), time:'1pm',
+                 title:'Jose Coronado Playground exchange', 
+                 description:'I can meet here at this time.', image:'', state: "CA")
+
+# v2.events.create(address_line_1:'2056 Sacramento St', city: 'San Francisco', 
+#   zipcode:'94109', date:Faker::Date.forward(30), time:'10am',title:'Lafayette Park exchange', 
+#   description:'I will setup a table by the tennis courts.', image:'')
+# v3.events.create(address_line_1:'333 Post St ', city: 'San Francisco', 
+#   zipcode:'94108', date:Faker::Date.forward(30), time:'11am',title:'Union Square exchange', 
+#   description:'I have a table and will be setup by', image:'')
+# v3.events.create(address_line_1:'320 Dolores St', city: 'San Francisco', 
+#   zipcode:'94110', date:Faker::Date.forward(30), time:'9am',title:'Mission Delores exchange', 
+#   description:'My house is nearby and I will be in front of the church for a couple hours on Saturday.', image:'')
+# v4.events.create(address_line_1:'585 Duboce Ave', city: 'San Francisco', 
+#   zipcode:'94117', date:Faker::Date.forward(30), time:'1pm',title:'Duboce Park exchange', 
+#   description:'I will be setup right by the MUNI on/off ramp.', image:'')
 
 EventsParticipant.create(participant_id:1, event_id:4)
 EventsParticipant.create(participant_id:2, event_id:3)

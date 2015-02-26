@@ -12,7 +12,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :latitude      
       t.string :longitude
       t.string :about
-      t.string :user_img
+      t.string :user_img, default: "chris.jpg"
       t.string :phone
       t.boolean :private_contact
 
