@@ -4,8 +4,7 @@ feature "create a listing" do
   before do
     @user = create(:user)
     sign_in_with @user
-    @listing = build(:listing)
-    create(:item)
+    @listing = build(:listing)    
   end
   
   scenario "with valid arguments", js: true do

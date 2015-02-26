@@ -3,6 +3,6 @@ FactoryGirl.define do
     title "Test title"
     description "This is a test description!"
     quantity 3    
+    association :item
   end
-
 end
