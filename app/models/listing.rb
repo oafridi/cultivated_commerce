@@ -7,6 +7,7 @@ class Listing < ActiveRecord::Base
   validates :description, presence: true
   validates :quantity, presence: true
   validates_presence_of :item
+  validates_presence_of :user
 
   def format
     self.title.downcase!
