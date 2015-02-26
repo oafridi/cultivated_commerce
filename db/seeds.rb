@@ -1,18 +1,26 @@
-v1 = User.create(first_name:'Bob', last_name:'Marley', user_name:'chrisb', email:'bobmarley@gmail.com',
-                 address_line_1:'277A Duncan st.', zipcode:'94131', about:'I play sax', phone:'555-717-5555', private_contact: true, 
-                 user_img:'chris.jpg', password:'12345678', password_confirmation:'12345678')
+v1 = User.create(first_name:'Bob', last_name:'Marley', user_name:'chrisb', 
+                 email:'bobmarley@gmail.com', address_line_1:'59 yale street', 
+                 zipcode:'94134', about:'I play sax', phone:'555-717-5555', 
+                 private_contact: true, user_img:'chris.jpg', password:'12345678', 
+                 password_confirmation:'12345678')
 
-v2 = User.create(first_name:'Osman', last_name:'Afridi', user_name:'osman', email: 'johnnycash@gmail.com', 
-                 address_line_1:'59 Yale street', zipcode:'94134', about:'I get down', phone:'(555) 447-5555', private_contact: true, 
-                 user_img:"osman.jpg", password:'12345678', password_confirmation:'12345678')
+v1 = User.create(first_name:'Bob', last_name:'Marley', user_name:'chrisb', 
+                 email:'bobmarley@gmail.com', address_line_1:'59 yale street', 
+                 zipcode:'94134', about:'I play sax', phone:'555-717-5555', 
+                 private_contact: true, user_img:'chris.jpg', password:'12345678', 
+                 password_confirmation:'12345678')
 
-v3 = User.create(first_name:'John', last_name:'Belushi', user_name:'johhny', email:'michaeljackson@gmail.com', 
-                 address_line_1:'59 silver ave', zipcode:'94134', about:'criminal', phone:'(555) 373-5555', private_contact: true, 
-                 user_img:"murat.jpg", password:'12345678', password_confirmation:'12345678')
+v1 = User.create(first_name:'Bob', last_name:'Marley', user_name:'chrisb', 
+                 email:'bobmarley@gmail.com', address_line_1:'59 yale street', 
+                 zipcode:'94134', about:'I play sax', phone:'555-717-5555', 
+                 private_contact: true, user_img:'chris.jpg', password:'12345678', 
+                 password_confirmation:'12345678')
 
-v4 = User.create(first_name:'Bob', last_name:'Marley', user_name:'vv', email: 'janetjackson@gmail.com',
-                 address_line_1:'', zipcode:'94131', about:'fun loving', phone:'555-555-5555', private_contact: true, 
-                 user_img:"murat.jpg", password:'12345678', password_confirmation:'12345678')
+v1 = User.create(first_name:'Bob', last_name:'Marley', user_name:'chrisb', 
+                 email:'bobmarley@gmail.com', address_line_1:'59 yale street', 
+                 zipcode:'94134', about:'I play sax', phone:'555-717-5555', 
+                 private_contact: true, user_img:'chris.jpg', password:'12345678', 
+                 password_confirmation:'12345678')
 
 users = [v1, v2, v3, v4]
 
@@ -52,42 +60,46 @@ v4.listings.create(title:'Honey', item_id: pantry.id, description:'I have a smal
 v4.listings.create(title:'Honey',item_id: pantry.id, description:'I have a small behive up north and I bring back honey to trade.',desired:'Oranges',quantity:'30 jars',image:"honey6.jpg",active:true)
 v4.listings.create(title:'Avocados', item_id: produce.id, description:'Haas avocados',desired:'Eggs',quantity:'40',image:"avocado.jpg",active:true)
 
-# users.each do |user|
-#   3.times do
-#     user.events.create(address_line_1: Faker::Address.street_name, zipcode: Faker::Address.zip_code, 
-#       city: Faker::Address.city, date:Faker::Date.forward(30), time:'9am - 1pm',
-#       title:Faker::Lorem.word, description:Faker::Lorem.sentence, 
-#       image:'', state:Faker::Address.state_abbr)
-#   end
-# end
-
 v1.events.create(address_line_1:'590 Dolores St', city: 'San Francisco',
                  zipcode:'94110', date:Faker::Date.forward(30), time:'9am - 1pm', 
-                 title:'Delores Park exchange', description:'', image:'', state: "CA")
+                 title:'Delores Park exchange', description:'come see me!', 
+                 image:'', state: "CA")
 
 v1.events.create(address_line_1:'1089 Fulton St', city: 'San Francisco', 
                  zipcode:'94117', date:Faker::Date.forward(30), time:'9am - 1pm',
                  title:'Alamo Square Park exchange', 
-                 description:'I will be setting up a table and canopy.  Join in if you want.', 
+                 description:'I will be setting up a table and canopy. Join in if you want.', 
                  image:'', state: "CA")
 
 v2.events.create(address_line_1:'2490 Folsom St', city: 'San Francisco', 
                  zipcode:'94110', date:Faker::Date.forward(30), time:'1pm',
                  title:'Jose Coronado Playground exchange', 
-                 description:'I can meet here at this time.', image:'', state: "CA")
+                 description:'I can meet here at this time.', 
+                 image:'', state: "CA")
 
-# v2.events.create(address_line_1:'2056 Sacramento St', city: 'San Francisco', 
-#   zipcode:'94109', date:Faker::Date.forward(30), time:'10am',title:'Lafayette Park exchange', 
-#   description:'I will setup a table by the tennis courts.', image:'')
-# v3.events.create(address_line_1:'333 Post St ', city: 'San Francisco', 
-#   zipcode:'94108', date:Faker::Date.forward(30), time:'11am',title:'Union Square exchange', 
-#   description:'I have a table and will be setup by', image:'')
-# v3.events.create(address_line_1:'320 Dolores St', city: 'San Francisco', 
-#   zipcode:'94110', date:Faker::Date.forward(30), time:'9am',title:'Mission Delores exchange', 
-#   description:'My house is nearby and I will be in front of the church for a couple hours on Saturday.', image:'')
-# v4.events.create(address_line_1:'585 Duboce Ave', city: 'San Francisco', 
-#   zipcode:'94117', date:Faker::Date.forward(30), time:'1pm',title:'Duboce Park exchange', 
-#   description:'I will be setup right by the MUNI on/off ramp.', image:'')
+v2.events.create(address_line_1:'2056 Sacramento St', city: 'San Francisco', 
+                 zipcode:'94109', date:Faker::Date.forward(30), time:'10am',
+                 title:'Lafayette Park exchange', 
+                 description:'I will setup a table by the tennis courts.', 
+                 image:'', state: "CA")
+
+v3.events.create(address_line_1:'333 Post St ', city: 'San Francisco', 
+                 zipcode:'94108', date:Faker::Date.forward(30), time:'11am',
+                 title:'Union Square exchange', 
+                 description:'I have a table and will be setup by', 
+                 image:'', state: "CA")
+
+v3.events.create(address_line_1:'320 Dolores St', city: 'San Francisco', 
+                 zipcode:'94110', date:Faker::Date.forward(30), time:'9am',
+                 title:'Mission Delores exchange', 
+                 description:'My house is nearby', 
+                 image:'', state: "CA")
+
+v4.events.create(address_line_1:'585 Duboce Ave', city: 'San Francisco', 
+                 zipcode:'94117', date:Faker::Date.forward(30), time:'1pm',
+                 title:'Duboce Park exchange', 
+                 description:'I will be setup right by the MUNI on/off ramp.', 
+                 image:'', state: "CA")
 
 EventsParticipant.create(participant_id:1, event_id:4)
 EventsParticipant.create(participant_id:2, event_id:3)
