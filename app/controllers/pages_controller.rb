@@ -59,7 +59,7 @@ class PagesController < ApplicationController
         {:lat=> current_user.latitude,
           :lng=> current_user.longitude,
           :infowindow=>
-           "<p> Address: #{current_user.full_street_address} </p>\n<br>\n",
+           "<p> Address: #{current_user.address} </p>\n<br>\n",
           :picture=>{:url=>"https://chart.googleapis.com/chart?chst=d_map_xpin_icon&chld=pin_star%7Chome%7C00FFFF%7CFF0000", :width=>32, :height=>32}}
         )
     end
@@ -68,7 +68,7 @@ class PagesController < ApplicationController
   def sort_events(events_unsorted)
     distances = []
     events_unsorted.each do |event|
-      event.distance = distance(current_user.coords, event.coords).round(2)
+      event.distance = distance(current_user.coordinates, event.coordinates).round(2)
     end
     events_unsorted.sort_by {|obj| obj.distance}.uniq
   end
