@@ -5,21 +5,13 @@ class PagesController < ApplicationController
     if !params[:search]
       @events = Event.all.uniq
       @listings = Listing.all.uniq
-      @hash = Gmaps4rails.build_markers(@events) do |event, marker|
-        marker.lat event.latitude
-        marker.lng event.longitude
-        marker.infowindow render_to_string(:partial => "/events/show", :locals => { :object => event})
-      end
+      @hash = build_hash
     elsif !user_signed_in?
       @listings = Listing.search(params[:search]).uniq.order("created_at DESC")
       users = @listings.map { |l| l.user }
       @events = users.map { |u| u.events }.uniq.flatten
 
-      @hash = Gmaps4rails.build_markers(@events) do |event, marker|
-        marker.lat event.latitude
-        marker.lng event.longitude
-        marker.infowindow render_to_string(:partial => "/events/show", :locals => { :object => event})
-      end
+      @hash = build_hash
     else
       counter = 0
       @listings = Listing.search(params[:search]).order("created_at DESC")
@@ -37,7 +29,6 @@ class PagesController < ApplicationController
         else
           color = "D0D0D0"
         end
-        # CHANGE COLOUR HERE
 
         marker.lat event.latitude
         marker.lng event.longitude
@@ -59,8 +50,17 @@ class PagesController < ApplicationController
     end
   end
 
+  private 
+  
+  def build_hash
+    Gmaps4rails.build_markers(@events) do |event, marker|
+      marker.lat event.latitude
+      marker.lng event.longitude
+      marker.infowindow render_to_string(:partial => "/events/show", :locals => { :object => event})
+    end
+  end
+
   def sort_events(events_unsorted)
-    distances = []
     events_unsorted.each do |event|
       event.distance = current_user.distance_to(event.coordinates)
     end
