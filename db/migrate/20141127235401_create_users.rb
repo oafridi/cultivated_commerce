@@ -6,8 +6,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string :user_name
       t.string :email, null: false, default: ""
       t.string :address_line_1
-      t.string :city
-      t.string :state
+      t.string :city, default: "San Francisco"
+      t.string :state, default: "CA"
       t.string :zipcode
       t.string :latitude      
       t.string :longitude
