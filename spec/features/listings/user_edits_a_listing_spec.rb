@@ -2,13 +2,8 @@ require 'rails_helper'
 
 feature "edit an existing listing" do
   before do
-    @user = create(:user)
-    item = build(:item)
-    @listing = build(:listing)
-    item.listings << @listing
-    @listing.save
-    @user.listings << @listing
-    sign_in_with @user
+    @listing = create(:listing)
+    sign_in_with @listing.user
   end
   
   scenario "update description" do
