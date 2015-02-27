@@ -1,14 +1,9 @@
 require 'rails_helper'
 
 feature "delete a listing" do
-  before do
-    @user = create(:user)
-    item = build(:item)
-    @listing = build(:listing)
-    item.listings << @listing
-    @listing.save
-    @user.listings << @listing
-    sign_in_with @user    
+  before do    
+    @listing = create(:listing)    
+    sign_in_with @listing.user
   end
   
   scenario "as logged in user" do

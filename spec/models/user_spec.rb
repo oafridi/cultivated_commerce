@@ -123,7 +123,14 @@ describe User, :type => :model do
           expect(user).to be_valid
         end
       end
+    end
+
+    describe "user_img" do
+      it "defaults to a default image if none provided" do
+        expect(user.user_img).to_not be_nil
+      end
     end 
+
   end
 
   describe "Instance methods" do

@@ -20,12 +20,11 @@ class ListingsController < ApplicationController
 
   def create
     @listing = Listing.new(listing_params)
-
-    if @listing.save
-      current_user.listings << @listing
+    current_user.listings << @listing
+    if current_user.listings << @listing      
       redirect_to current_user
     else
-      render 'users/show'
+      redirect_to current_user   
     end
   end
 
