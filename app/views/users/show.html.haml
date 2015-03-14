@@ -1,0 +1,56 @@
+/ LEFT SIDE
+%section.user.col-md-3.bg-c2.text-center
+  .bg-w
+    .user-info
+      = image_tag @user.img, alt: "user-img", class: "user-img bg-c3 "
+      %h2= @user.first_name
+      %p= @user.about
+    .text-center
+      - if @user.private_contact == true ||  current_user.id == @user.id
+        %a{:href => "mailto:#{@user.email} "}
+          %i.fa.fa-envelope-o.fa-3x
+        %br
+          %br
+            %br
+      - if user_signed_in? && current_user.id == @user.id
+        %div
+          %a#js-edit.button{"data-target" => "#myEditprofile", "data-toggle" => "modal", :href => "#"} Edit profile
+          %br
+            %br
+        %br
+          = render "edit"
+  / EVENTS I WILL ATTEND
+  %div
+    %h3.bold Exchange's i'm attending
+    %ul.exchanges.bg-w.p-tb.text-left
+      - if @user.events && !@user.events.empty?
+        - @user.events.each do |e|
+          = render 'attending', e: e
+      - else
+        %p None right now
+  / EVENT HOSTING
+  %div
+    %h3.bold Exchange's i'm hosting
+    - if user_signed_in? && current_user.id == @user.id
+      %ul.exchanges.bg-w.p-tb.text-left
+        - if @user.hosted_events && !@user.hosted_events.empty?
+          - @user.hosted_events.each do |e|
+            = render 'hosting', e: e
+        - else
+          %p None right now
+      %br
+        .button.mapbutton
+          %a{"data-target" => "#myAddEvent", "data-toggle" => "modal"} add exchange
+        %br
+          / Add Exchange Modal
+          = render "pages/addevent"
+
+/ RIGHT SIDE
+%section.listings.bg-c.col-md-9
+  - if user_signed_in? && current_user.id == @user.id
+    %div
+      = render "listings/form"
+  %ul.listings
+    - if @user.listings && !@user.listings.empty?
+      - @user.listings.order(created_at: :desc).each do |l|
+        = render 'listing', l: l
