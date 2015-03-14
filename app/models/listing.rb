@@ -9,6 +9,10 @@ class Listing < ActiveRecord::Base
   validates_presence_of :item
   validates_presence_of :user
 
+  delegate :img,
+           :to => :user,
+           :prefix => true
+
   def format
     self.title.downcase!
   end
