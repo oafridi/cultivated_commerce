@@ -1,9 +1,6 @@
-- if object.hosts.first
-  %p Host: = object.hosts.first.email
-
-%p Title: = object.title
-%p Address: = object.address 
-%p Date: = object.date 
-%p Time: = object.time 
-%p Distance: = object.distance Miles
+%p= "Title: #{object.title}"
+%p= "Address: #{object.address}"
+%p= "Date: #{object.date}"
+%p= "Time: #{object.time}"
+%p= "Distance: #{object.distance} Miles"
 %br

@@ -26,6 +26,10 @@ class Event < ActiveRecord::Base
   has_many :participants, class_name: "User", through: :events_participants
   has_many :hosts, class_name: "User", through: :events_hosts
 
+  delegate :email,
+           :to => :events_host,
+           :prefix => true
+
   def address
     if self.address_line_1 && self.city && self.zipcode
       "#{self.address_line_1}, #{self.city}, #{self.zipcode}" 
