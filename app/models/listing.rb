@@ -1,4 +1,6 @@
 class Listing < ActiveRecord::Base
+  extend ListingSearcher
+
   belongs_to :item
   belongs_to :user
   before_save :format
@@ -8,8 +10,8 @@ class Listing < ActiveRecord::Base
   validates :title, presence: true
   validates :description, presence: true
   validates :quantity, presence: true
-  validates_presence_of :item
-  validates_presence_of :user
+  validates :item, presence: true
+  validates :user, presence: true
 
   delegate :img,
            :to => :user,
@@ -17,10 +19,5 @@ class Listing < ActiveRecord::Base
 
   def format
     self.title.downcase!
-  end
-
-  def self.search(query)
-    query.downcase!
-    where("title like ?", "%#{query}%")
   end  
 end
