@@ -1,25 +1,25 @@
 v1 = User.create(first_name:'Bob', last_name:'Marley', user_name:'chrisb', 
                  email:'bobmarley@gmail.com', address_line_1:'59 yale street', 
                  zipcode:'94134', about:'I play sax', phone:'555-717-5555', 
-                 private_contact: true, user_img:'chris.jpg', password:'12345678', 
+                 private_contact: true, img:'chris.jpg', password:'12345678', 
                  password_confirmation:'12345678')
 
 v2 = User.create(first_name:'Bob', last_name:'Marley', user_name:'chrisb', 
                  email:'bobmarlet@gmail.com', address_line_1:'59 yale street', 
                  zipcode:'94134', about:'I play sax', phone:'555-717-5555', 
-                 private_contact: true, user_img:'chris.jpg', password:'12345678', 
+                 private_contact: true, img:'chris.jpg', password:'12345678', 
                  password_confirmation:'12345678')
 
 v3 = User.create(first_name:'Bob', last_name:'Marley', user_name:'chrisb', 
                  email:'bobmarler@gmail.com', address_line_1:'59 yale street', 
                  zipcode:'94134', about:'I play sax', phone:'555-717-5555', 
-                 private_contact: true, user_img:'chris.jpg', password:'12345678', 
+                 private_contact: true, img:'chris.jpg', password:'12345678', 
                  password_confirmation:'12345678')
 
 v4 = User.create(first_name:'Bob', last_name:'Marley', user_name:'chrisb', 
                  email:'bobmarlee@gmail.com', address_line_1:'59 yale street', 
                  zipcode:'94134', about:'I play sax', phone:'555-717-5555', 
-                 private_contact: true, user_img:'chris.jpg', password:'12345678', 
+                 private_contact: true, img:'chris.jpg', password:'12345678', 
                  password_confirmation:'12345678')
 
 produce = Item.create(kind:'Produce', category:'i-produce.svg')

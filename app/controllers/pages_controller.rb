@@ -7,14 +7,14 @@ class PagesController < ApplicationController
       @listings = Listing.all.uniq
       @hash = build_hash
     elsif !user_signed_in?
-      @listings = Listing.search(params[:search]).uniq.order("created_at DESC")
+      @listings = Listing.search(params[:search])
       users = @listings.map { |l| l.user }
       @events = users.map { |u| u.events }.uniq.flatten
 
       @hash = build_hash
     else
       counter = 0
-      @listings = Listing.search(params[:search]).order("created_at DESC")
+      @listings = Listing.search(params[:search])
       users = @listings.map { |l| l.user }
       events_unsorted = users.map { |u| u.events }.uniq.flatten
       @events = sort_events(events_unsorted)

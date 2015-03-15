@@ -125,9 +125,9 @@ describe User, :type => :model do
       end
     end
 
-    describe "user_img" do
+    describe "img" do
       it "defaults to a default image if none provided" do
-        expect(user.user_img).to_not be_nil
+        expect(user.img).to_not be_nil
       end
     end 
 

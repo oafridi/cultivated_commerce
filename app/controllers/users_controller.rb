@@ -7,7 +7,11 @@ class UsersController < ApplicationController
   def show
     @listing = Listing.new
     @user = User.find_by(id: params[:id])
+    
+    @events = @user.events
+    @hosted_events = @user.hosted_events
     @items= Item.all
+    @listings = @user.listings
   end
 
   def create
@@ -27,7 +31,9 @@ class UsersController < ApplicationController
 
 private
     def update_params
-      params.require(:user).permit(:first_name, :last_name, :username, :email, :address_line_1, :city, :state, :zipcode, :about, :user_img, :phone, :private_contact, :password, :password_confirmation)
+      params.require(:user).permit(:first_name, :last_name, :username, :email, 
+        :address_line_1, :city, :state, :zipcode, :about, :img, :phone, 
+        :private_contact, :password, :password_confirmation)
     end
 
 end
