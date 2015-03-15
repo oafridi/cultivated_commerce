@@ -1,0 +1,10 @@
+%li.exchange
+  %h3= hosting.title
+  %p= hosting.address_line_1
+  %p= hosting.city
+  %p= hosting.zipcode 
+  %p= hosting.description
+  %strong
+   - if user_signed_in? && current_user.id == @user.id
+    = link_to "Cancel event", "/events/#{hosting.id.to_s}/cancel" |
+    = link_to "Edit event", edit_event_path(hosting)

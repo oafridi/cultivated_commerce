@@ -7,7 +7,11 @@ class UsersController < ApplicationController
   def show
     @listing = Listing.new
     @user = User.find_by(id: params[:id])
+    
+    @events = @user.events
+    @hosted_events = @user.hosted_events
     @items= Item.all
+    @listings = @user.listings
   end
 
   def create

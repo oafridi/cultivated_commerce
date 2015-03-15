@@ -2,7 +2,7 @@
 %section.user.col-md-3.bg-c2.text-center
   .bg-w
     .user-info
-      = image_tag @user.img, alt: "user-img", class: "user-img bg-c3 "
+      = image_tag @user.img, alt: "user-img", class: "user-img bg-c3"
       %h2= @user.first_name
       %p= @user.about
     .text-center
@@ -23,9 +23,8 @@
   %div
     %h3.bold Exchange's i'm attending
     %ul.exchanges.bg-w.p-tb.text-left
-      - if @user.events && !@user.events.empty?
-        - @user.events.each do |e|
-          = render 'attending', e: e
+      - if @events && !@events.empty?
+        = render partial: 'events', collection: @events
       - else
         %p None right now
   / EVENT HOSTING
@@ -33,9 +32,8 @@
     %h3.bold Exchange's i'm hosting
     - if user_signed_in? && current_user.id == @user.id
       %ul.exchanges.bg-w.p-tb.text-left
-        - if @user.hosted_events && !@user.hosted_events.empty?
-          - @user.hosted_events.each do |e|
-            = render 'hosting', e: e
+        - if @hosted_events && !@hosted_events.empty?          
+          = render partial: 'hosting', collection: @hosted_events
         - else
           %p None right now
       %br
@@ -51,6 +49,5 @@
     %div
       = render "listings/form"
   %ul.listings
-    - if @user.listings && !@user.listings.empty?
-      - @user.listings.order(created_at: :desc).each do |l|
-        = render 'listing', l: l
+    - if @listings && !@listings.empty?
+      = render partial: 'listing', collection: @listings

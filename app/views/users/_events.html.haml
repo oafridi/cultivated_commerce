@@ -1,0 +1,11 @@
+%li.exchange
+  %h3= events.title
+  %p
+    = events.address_line_1
+    = events.city
+    = events.zipcode
+    %br
+    = events.description
+  - if user_signed_in? && current_user.id == @user.id
+    %p.small.bold.text-right
+      = link_to("Unattend", "/events/"+events.id.to_s+"/unattend")
