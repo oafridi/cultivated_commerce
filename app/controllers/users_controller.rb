@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     
     @events = @user.events
     @hosted_events = @user.hosted_events
-    @items= Item.all
+    @items = Item.all
     @listings = @user.listings
   end
 

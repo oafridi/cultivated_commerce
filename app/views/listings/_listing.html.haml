@@ -1,0 +1,66 @@
+<li class="listing col-sm-6 row m-tb" #{"data-kind= filter-#{listing.item.id}"}>
+/ FRONTSIDE
+.listing-front.col-sm-12
+  .bg-c1.height.p-tb
+    .type-icon.bg-c1-light.abs
+      %p= image_tag listing.item.category, alt: "item-category", class: ""
+    .row
+      .col-xs-12
+        %div
+          = image_tag listing.image, alt: "listing-image", class: "listing-img bg-c3 "
+          <a href=#{"/users/#{listing.user.id}"}>
+          
+          \#{image_tag listing.user_img, alt: "usr-image", class: "user-img-s bg-c4 abs"}
+      .col-xs-12
+        %div
+          %h3= listing.title
+          %p= listing.description
+          %p
+            Quantity (aprox.): #{listing.quantity}
+          %br
+            %a.bold.small.flip-to-back{:href => ""} SHOW EXCHANGES
+/ BACKSIDE
+.listing-events.col-sm-12
+  .bg-c4.height.overflow.p-tb
+    .row
+      .listing-event.c-w.col-xs-12
+        %h3 EXCHANGES:
+        %ul
+          %li.exchange
+            - listing.user.hosted_events.uniq.each do |e|
+              / ADD PIN NUMBER HERE
+              %h3
+                = e.title
+              %p
+                = e.time
+                on #{e.date}
+              %p= e.description
+              %p
+                = e.address_line_1
+                = e.city
+              %strong= link_to("JOIN", "/events/"+e.id.to_s+"/attend")
+        %ul
+          %ul
+            %li.exchange
+              - listing.user.events.uniq.each do |e|
+                %hr/
+                / ADD PIN NUMBER HERE
+                %h3
+                  = e.counter
+                  = e.title
+                %p
+                  = e.time
+                  on #{e.date}
+                %p= e.description
+                %p
+                  = e.address_line_1
+                  = e.city
+                %strong
+                  = link_to("JOIN", "/events/"+e.id.to_s+"/attend")
+                  %strong
+            %hr/
+          %br
+            %br
+      .listing-event.col-xs-12
+        %br
+          %a.small.c-w.bold.flip-back.button{:href => ""} RETURN

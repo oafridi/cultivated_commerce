@@ -1,8 +1,11 @@
-= simple_form_for @event do |f|
-  = f.input :title
-  = f.input :description
-  = f.input :image
-  = f.input :address_line_1
-  = f.input :city
-  = f.input :date
-  = f.button :submit
+= simple_form_for(:event, :url => events_path(:event), 
+                          defaults: { wrapper_html: { class: "field modalextra" }}) do |f|
+  = f.input :date, :placeholder => "you need a date"
+  = f.input :time, :placeholder => "e.g. 9am - 1pm"
+  = f.input :title, :placeholder => "give it a title"
+  = f.input :description, :placeholder => "tell us about the event"
+  = f.input :address_line_1, :placeholder => "some street address"
+  = f.input :city, :placeholder => "some city"
+  = f.input :zipcode, :placeholder => "some zip code"
+  .modalextra
+    = f.button :submit, "Submit", class: "button m-tb"

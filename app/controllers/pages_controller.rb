@@ -8,7 +8,7 @@ class PagesController < ApplicationController
       @hash = build_hash
     elsif !user_signed_in?
       @listings = Listing.search(params[:search])
-      users = @listings.map { |l| l.user }
+      users = @listings.map { |listing| listing.user }
       @events = users.map { |u| u.events }.uniq.flatten
 
       @hash = build_hash

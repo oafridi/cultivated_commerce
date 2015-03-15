@@ -1,0 +1,10 @@
+#myAddEvent.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog
+    .modal-content.text-left
+      .modal-header
+        %button.close{"data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} &times;
+          %span.sr-only Close
+        %h2#myModalLabel.modal-title.bold.c-c4.modalextra ADD EVENT
+      .modal-body
+        = render 'events/form'
