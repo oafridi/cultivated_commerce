@@ -38,7 +38,7 @@ group :test do
   gem 'capybara', '~> 2.4.4'
   gem 'database_cleaner', '~> 1.3.0'
   gem 'launchy', '~> 2.4.3'
-  gem 'selenium-webdriver', '~> 2.44.0'
+  gem 'selenium-webdriver', '~> 2.45.0'
   gem 'rspec-collection_matchers', '~> 1.1.2'
   gem 'shoulda-matchers', require: false
   gem 'simplecov', '~> 0.9.1'
