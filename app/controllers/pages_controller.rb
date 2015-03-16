@@ -9,7 +9,7 @@ class PagesController < ApplicationController
     elsif !user_signed_in?
       @listings = Listing.search(params[:search])
       users = @listings.map { |listing| listing.user }
-      @events = users.map { |u| u.events }.uniq.flatten
+      @events = users.map { |user| user.events }.uniq.flatten
 
       @hash = build_hash
     else
