@@ -15,7 +15,7 @@ class EventsController < ApplicationController
 
   def edit
     @event = Event.find_by(id: params[:id])
-    render "events/edit"
+    render 'events/edit'
   end
 
   def update

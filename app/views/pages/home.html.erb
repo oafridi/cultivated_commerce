@@ -16,7 +16,7 @@
   <div class="page-right col-md-7 bg-c" >
     <section class="filters">
     <!-- Add Exchange Modal -->
-    <%= render "pages/add_event" %>
+    <%= render 'pages/add_event' %>
 
       <!-- Type filter -->
       <div class="filter-type row p-tb">
@@ -28,7 +28,7 @@
           <% @items.each do |item| %>
             <!-- will be created dynamically -->
             <li class="type-icon sort bg-c1-light m-lr inl <%="filter-#{item.id}"%> ">
-              <%= image_tag item.category, alt: "item-category", class: ""%>
+              <%= image_tag item.category, alt: 'item-category', class: ''%>
             </li>
           <% end %>
           </ul>
@@ -41,11 +41,11 @@
         </div>
 
          <div class="col-md-7">
-          <%= form_tag('/', :method => "get", id: "search-form", class: "form f-width") do %>
-            <%= text_field_tag :search, params[:search], placeholder: "Search Listings", class: "form-control"%>
+          <%= form_tag('/', :method => 'get', id: 'search-form', class: 'form f-width') do %>
+            <%= text_field_tag :search, params[:search], placeholder: 'Search Listings', class: 'form-control'%>
           </div>
             <div class="col-md-2">
-            <%= submit_tag "GO", :name => nil, class: "f-width button-d" %>
+            <%= submit_tag 'GO', :name => nil, class: 'f-width button-d' %>
           <% end %>
           </div>
       </div>

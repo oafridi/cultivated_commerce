@@ -11,13 +11,13 @@ RSpec.describe Listing, :type => :model do
 
   let(:listing) { create(:listing) }
 
-  it "is valid with a title, description, quantity, item and user" do    
+  it 'is valid with a title, description, quantity, item and user' do
     expect(listing).to be_valid
   end
 
   describe '#format' do
-    it "downcases the title" do
-      listing.title = "UPCASE"      
+    it 'downcases the title' do
+      listing.title = 'UPCASE'
       listing.save
       expect(listing.title).to eq(listing.title.downcase)
     end

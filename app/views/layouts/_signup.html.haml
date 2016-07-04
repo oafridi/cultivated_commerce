@@ -1,19 +1,19 @@
-#mySignup.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+#mySignup.modal.fade{'aria-hidden' => 'true', 'aria-labelledby' => 'myModalLabel', :role => 'dialog', :tabindex => '-1'}
   .modal-dialog
     .modal-content
       .modal-header
-        %button.close{"data-dismiss" => "modal", :type => "button"}
-          %span{"aria-hidden" => "true"} &times;
+        %button.close{'data-dismiss' => 'modal', :type => 'button'}
+          %span{'aria-hidden' => 'true'} &times;
           %span.sr-only Close
         %h2#myModalLabel.modal-title.bold.c-c4.modalextra.nopadding Sign up
         %br
-        %p{:style => "c-c4 small;"}
+        %p{:style => 'c-c4 small;'}
           You need to sign up before adding an exchange
       .modal-body
-        = simple_form_for(:user, url: registration_path(:user), html: { class: "" }) do |f|
+        = simple_form_for(:user, url: registration_path(:user), html: { class: '' }) do |f|
           = f.input :first_name
           = f.input :last_name
-          = f.input :email, placeholder: "user@domain.com", input_html: { id: 'js-email-signup' }
+          = f.input :email, placeholder: 'user@domain.com', input_html: { id: 'js-email-signup' }
           = f.input :address_line_1        
           = f.input :city
           = f.input :zipcode
@@ -21,7 +21,7 @@
           - if @validatable
             %em
               (#{@minimum_password_length} characters minimum)
-          = f.input :password, input_html: { id: "js-password-signup" }
-          = f.input :password_confirmation, input_html: { id: "js-password-confirmation-signup" }
+          = f.input :password, input_html: { id: 'js-password-signup' }
+          = f.input :password_confirmation, input_html: { id: 'js-password-confirmation-signup' }
           .actions
-            = f.button :submit, "Sign up"
+            = f.button :submit, 'Sign up'

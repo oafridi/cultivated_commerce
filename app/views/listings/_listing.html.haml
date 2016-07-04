@@ -3,11 +3,11 @@
 .listing-front.col-sm-12
   .bg-c1.height.p-tb
     .type-icon.bg-c1-light.abs
-      %p= image_tag listing.item.category, alt: "item-category", class: ""
+      %p= image_tag listing.item.category, alt: 'item-category', class: ''
     .row
       .col-xs-12
         %div
-          = image_tag listing.image, alt: "listing-image", class: "listing-img bg-c3 "
+          = image_tag listing.image, alt: 'listing-image', class: 'listing-img bg-c3 '
           <a href=#{"/users/#{listing.user.id}"}>
           
           \#{image_tag listing.user_img, alt: "usr-image", class: "user-img-s bg-c4 abs"}
@@ -18,7 +18,7 @@
           %p
             Quantity (aprox.): #{listing.quantity}
           %br
-            %a.bold.small.flip-to-back{:href => ""} SHOW EXCHANGES
+            %a.bold.small.flip-to-back{:href => ''} SHOW EXCHANGES
 / BACKSIDE
 .listing-events.col-sm-12
   .bg-c4.height.overflow.p-tb
@@ -38,7 +38,7 @@
               %p
                 = e.address_line_1
                 = e.city
-              %strong= link_to("JOIN", "/events/"+e.id.to_s+"/attend")
+              %strong= link_to('JOIN', '/events/'+e.id.to_s+'/attend')
         %ul
           %ul
             %li.exchange
@@ -56,11 +56,11 @@
                   = e.address_line_1
                   = e.city
                 %strong
-                  = link_to("JOIN", "/events/"+e.id.to_s+"/attend")
+                  = link_to('JOIN', '/events/'+e.id.to_s+'/attend')
                   %strong
             %hr/
           %br
             %br
       .listing-event.col-xs-12
         %br
-          %a.small.c-w.bold.flip-back.button{:href => ""} RETURN
+          %a.small.c-w.bold.flip-back.button{:href => ''} RETURN

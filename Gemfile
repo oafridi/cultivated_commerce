@@ -31,7 +31,7 @@ group :test, :development do
   gem 'faker', '~> 1.4.3'
   gem 'pry-rails', '~> 0.3.2'
   gem 'rspec-rails', '~> 3.1.0'
-  gem "spring"
+  gem 'spring'
 end
 
 group :test do
@@ -46,11 +46,11 @@ end
 
 group :development do  
   gem 'pry', '~> 0.10.1'
-  gem "spring-commands-rspec"
+  gem 'spring-commands-rspec'
   gem 'guard', '~> 2.8.2'
   gem 'guard-rspec', '~> 4.3.1'
   gem 'guard-livereload', '~> 2.4.0'
-  gem "rack-livereload", '~> 0.3.15'
+  gem 'rack-livereload', '~> 0.3.15'
   gem 'better_errors', '~> 2.1.0'
 end
 

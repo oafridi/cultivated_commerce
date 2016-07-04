@@ -3,15 +3,15 @@ require 'rails_helper'
 describe User, :type => :model do  
   let(:user) { build_stubbed(:user) }
   
-  describe "validations" do
+  describe 'validations' do
     describe 'email' do
-      it "is invalid if blank" do
+      it 'is invalid if blank' do
         user.email = nil
         user.valid?
         expect(user.errors[:email]).to include("can't be blank")
       end
 
-      it "should accept valid values" do        
+      it 'should accept valid values' do
         addresses = %w[user@foo.COM A_US-ER@f.b.org frst.lst@foo.jp a+b@baz.cn]
         addresses.each do |valid_address|
           user.email = valid_address
@@ -19,7 +19,7 @@ describe User, :type => :model do
         end    
       end
 
-      it "should not accept invalid values" do        
+      it 'should not accept invalid values' do
         addresses = %w[oooo@foo 123456 abcdefgh a?/ass2e3d]
         addresses.each do |invalid_address|
           user.email = invalid_address
@@ -29,17 +29,17 @@ describe User, :type => :model do
       it { should validate_uniqueness_of(:email) }
     end
 
-    describe "password" do
-      it "is invalid if blank" do
-        user.password = ""
+    describe 'password' do
+      it 'is invalid if blank' do
+        user.password = ''
         user.valid?
         expect(user.errors[:password]).to include("can't be blank")        
       end
 
-      it "is valid when between 8 to 20 characters" do
-        min = "1" * 8
-        mid = "1" * 14
-        max = "1" * 20
+      it 'is valid when between 8 to 20 characters' do
+        min = '1' * 8
+        mid = '1' * 14
+        max = '1' * 20
         passwords = [min, mid, max]
         passwords.each do |valid_password|
           user.password = valid_password
@@ -61,30 +61,30 @@ describe User, :type => :model do
       
     end
 
-    describe "first_name" do     
+    describe 'first_name' do
       
-      it "is invalid when blank" do
-        user.first_name = ""
+      it 'is invalid when blank' do
+        user.first_name = ''
         user.valid?
         expect(user.errors[:first_name]).to include("can't be blank")
       end
 
-      it "is invalid when less than 2 characters" do
-        user.first_name = "a"
+      it 'is invalid when less than 2 characters' do
+        user.first_name = 'a'
         user.valid?
         expect(user.errors[:first_name]).to include('is too short (minimum is 2 characters)')        
       end
 
-      it "is invalid when greater than 40 characters" do
-        user.first_name = "a" * 41      
+      it 'is invalid when greater than 40 characters' do
+        user.first_name = 'a' * 41
         user.valid?
         expect(user.errors[:first_name]).to include('is too long (maximum is 40 characters)')
       end
 
-      it "is valid when between 2 to 40 characters" do
-        min = "a" * 2
-        mid = "a" * 21
-        max = "a" * 40
+      it 'is valid when between 2 to 40 characters' do
+        min = 'a' * 2
+        mid = 'a' * 21
+        max = 'a' * 40
 
         [min,mid,max].each do |valid_name|
           user.first_name = valid_name
@@ -93,30 +93,30 @@ describe User, :type => :model do
       end
     end    
 
-    describe "last_name" do     
+    describe 'last_name' do
       
-      it "is invalid when blank" do
-        user.last_name = ""
+      it 'is invalid when blank' do
+        user.last_name = ''
         user.valid?
         expect(user.errors[:last_name]).to include("can't be blank")
       end
 
-      it "is invalid when less than 2 characters" do
-        user.last_name = "a"
+      it 'is invalid when less than 2 characters' do
+        user.last_name = 'a'
         user.valid?
         expect(user.errors[:last_name]).to include('is too short (minimum is 2 characters)')        
       end
 
-      it "is invalid when greater than 40 characters" do
-        user.last_name = "a" * 41      
+      it 'is invalid when greater than 40 characters' do
+        user.last_name = 'a' * 41
         user.valid?
         expect(user.errors[:last_name]).to include('is too long (maximum is 40 characters)')
       end
 
-      it "is valid when between 2 to 40 characters" do
-        min = "a" * 2
-        mid = "a" * 21
-        max = "a" * 40
+      it 'is valid when between 2 to 40 characters' do
+        min = 'a' * 2
+        mid = 'a' * 21
+        max = 'a' * 40
 
         [min,mid,max].each do |valid_name|
           user.last_name = valid_name
@@ -125,25 +125,25 @@ describe User, :type => :model do
       end
     end
 
-    describe "img" do
-      it "defaults to a default image if none provided" do
+    describe 'img' do
+      it 'defaults to a default image if none provided' do
         expect(user.img).to_not be_nil
       end
     end 
 
   end
 
-  describe "Instance methods" do
-    it "return a users full address as a string" do
+  describe 'Instance methods' do
+    it 'return a users full address as a string' do
       expect(user.address).to eq("#{user.address_line_1}, #{user.city}, #{user.zipcode}")
     end
 
-    it "returns the geocordinates associated to a user" do      
+    it 'returns the geocordinates associated to a user' do
       expect(user.coordinates).to eq([user.latitude, user.longitude])
     end
   end
 
-  it "is valid with valid parameters" do
+  it 'is valid with valid parameters' do
     expect(build_stubbed(:user)).to be_valid
   end  
 end

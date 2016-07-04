@@ -3,7 +3,7 @@ class Item < ActiveRecord::Base
   
   validates :kind, 
     presence: true,
-    format: { with: /\A[a-zA-Z\s]*\z/, message: "can only contain letters" }
+    format: { with: /\A[a-zA-Z\s]*\z/, message: 'can only contain letters'}
   validates :category, 
     presence: true    
 end

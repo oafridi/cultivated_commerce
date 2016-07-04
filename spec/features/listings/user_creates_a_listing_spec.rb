@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature "create a listing" do
+feature 'create a listing' do
   before do
     @user = create(:user)
     sign_in_with @user    
@@ -9,7 +9,7 @@ feature "create a listing" do
     p @listing
   end
   
-  scenario "with valid arguments", js: true do
+  scenario 'with valid arguments', js: true do
     visit users_path
     expect(page).not_to have_content(@listing[:description])
     click_link 'Add another item'

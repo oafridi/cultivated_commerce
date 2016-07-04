@@ -8,4 +8,4 @@
     = events.description
   - if user_signed_in? && current_user.id == @user.id
     %p.small.bold.text-right
-      = link_to("Unattend", "/events/"+events.id.to_s+"/unattend")
+      = link_to('Unattend', '/events/'+events.id.to_s+'/unattend')

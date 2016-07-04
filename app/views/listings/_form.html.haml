@@ -1,18 +1,18 @@
 / ADD AN ITEM
 .button-d.text-center.add-button
-  %a{href: ""} Add another item
+  %a{href: ''} Add another item
 .row.m-tb
   .col-sm-12
     .add-product.p-tb.hide
       .row
       .row
         .col-xs-5
-          %img.test{src: ""}
+          %img.test{src: ''}
         .col-xs-7
           = simple_form_for @listing do |f|
-            = f.input :title, :class => "input"
-            = f.input :description, :class => "input"
-            = f.input :quantity, :class => "input"
+            = f.input :title, :class => 'input'
+            = f.input :description, :class => 'input'
+            = f.input :quantity, :class => 'input'
             = collection_select(:listing, :item_id, Item.all, :id, :kind)
             = f.input :image
-            = f.button :submit , :class => "submit-item button"
+            = f.button :submit , :class => 'submit-item button'

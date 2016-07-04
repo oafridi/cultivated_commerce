@@ -14,88 +14,88 @@
 ActiveRecord::Schema.define(version: 20150314212439) do
 
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension 'plpgsql'
 
-  create_table "events", force: true do |t|
-    t.string   "address_line_1"
-    t.string   "city"
-    t.string   "zipcode"
-    t.string   "state"
-    t.date     "date"
-    t.string   "time"
-    t.string   "title"
-    t.string   "description"
-    t.string   "image"
-    t.float    "latitude"
-    t.float    "longitude"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table 'events', force: true do |t|
+    t.string 'address_line_1'
+    t.string 'city'
+    t.string 'zipcode'
+    t.string 'state'
+    t.date 'date'
+    t.string 'time'
+    t.string 'title'
+    t.string 'description'
+    t.string 'image'
+    t.float 'latitude'
+    t.float 'longitude'
+    t.integer 'user_id'
+    t.datetime 'created_at'
+    t.datetime 'updated_at'
   end
 
-  create_table "events_hosts", force: true do |t|
-    t.integer  "host_id"
-    t.integer  "event_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table 'events_hosts', force: true do |t|
+    t.integer 'host_id'
+    t.integer 'event_id'
+    t.datetime 'created_at'
+    t.datetime 'updated_at'
   end
 
-  create_table "events_participants", force: true do |t|
-    t.integer  "participant_id"
-    t.integer  "event_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table 'events_participants', force: true do |t|
+    t.integer 'participant_id'
+    t.integer 'event_id'
+    t.datetime 'created_at'
+    t.datetime 'updated_at'
   end
 
-  create_table "items", force: true do |t|
-    t.string   "kind"
-    t.string   "category"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table 'items', force: true do |t|
+    t.string 'kind'
+    t.string 'category'
+    t.datetime 'created_at'
+    t.datetime 'updated_at'
   end
 
-  create_table "listings", force: true do |t|
-    t.string   "title"
-    t.string   "description"
-    t.string   "desired"
-    t.string   "quantity"
-    t.string   "image",       default: "orange2.jpg"
-    t.boolean  "active"
-    t.integer  "item_id"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table 'listings', force: true do |t|
+    t.string 'title'
+    t.string 'description'
+    t.string 'desired'
+    t.string 'quantity'
+    t.string   'image',       default: 'orange2.jpg'
+    t.boolean 'active'
+    t.integer 'item_id'
+    t.integer 'user_id'
+    t.datetime 'created_at'
+    t.datetime 'updated_at'
   end
 
-  create_table "users", force: true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "user_name"
-    t.string   "email",                  default: "",              null: false
-    t.string   "address_line_1"
-    t.string   "city",                   default: "San Francisco"
-    t.string   "state",                  default: "CA"
-    t.string   "zipcode"
-    t.string   "latitude"
-    t.string   "longitude"
-    t.string   "about"
-    t.string   "img",                    default: "chris.jpg"
-    t.string   "phone"
-    t.boolean  "private_contact"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "encrypted_password",     default: "",              null: false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,               null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.inet     "current_sign_in_ip"
-    t.inet     "last_sign_in_ip"
+  create_table 'users', force: true do |t|
+    t.string 'first_name'
+    t.string 'last_name'
+    t.string 'user_name'
+    t.string   'email',                  default: '',              null: false
+    t.string 'address_line_1'
+    t.string   'city',                   default: 'San Francisco'
+    t.string   'state',                  default: 'CA'
+    t.string 'zipcode'
+    t.string 'latitude'
+    t.string 'longitude'
+    t.string 'about'
+    t.string   'img',                    default: 'chris.jpg'
+    t.string 'phone'
+    t.boolean 'private_contact'
+    t.datetime 'created_at'
+    t.datetime 'updated_at'
+    t.string   'encrypted_password',     default: '',              null: false
+    t.string 'reset_password_token'
+    t.datetime 'reset_password_sent_at'
+    t.datetime 'remember_created_at'
+    t.integer  'sign_in_count',          default: 0,               null: false
+    t.datetime 'current_sign_in_at'
+    t.datetime 'last_sign_in_at'
+    t.inet 'current_sign_in_ip'
+    t.inet 'last_sign_in_ip'
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index 'users', ['email'], name: 'index_users_on_email', unique: true, using: :btree
+  add_index 'users', ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true, using: :btree
 
 end

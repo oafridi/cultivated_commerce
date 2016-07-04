@@ -1,21 +1,21 @@
-#myEditprofile.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+#myEditprofile.modal.fade{'aria-hidden' => 'true', 'aria-labelledby' => 'myModalLabel', :role => 'dialog', :tabindex => '-1'}
   .modal-dialog
     .modal-content.text-left
       .modal-header
-        %button.close{"data-dismiss" => "modal", :type => "button"}
-          %span{"aria-hidden" => "true"} &times;
+        %button.close{'data-dismiss' => 'modal', :type => 'button'}
+          %span{'aria-hidden' => 'true'} &times;
           %span.sr-only Close
         %h2#myModalLabel.modal-title.bold.c-c4.modalextra EDIT PROFILE
       .modal-body
         = simple_form_for @user do |f|
-          = f.input :first_name, class: "form-control"
-          = f.input :last_name, class: "form-control"
-          = f.input :email, class: "form-control"
+          = f.input :first_name, class: 'form-control'
+          = f.input :last_name, class: 'form-control'
+          = f.input :email, class: 'form-control'
           = f.input :private_contact
           (keep my email address private)
-          = f.input:address_line_1, class: "form-control"
-          = f.input :city, class: "form-control"
-          = f.input :state, class: "form-control"
-          = f.input :zipcode, class: "form-control"
-          = f.input :about, class: "form-control"        
-          = f.submit "Save changes", class: "actions m-tb"
+          = f.input:address_line_1, class: 'form-control'
+          = f.input :city, class: 'form-control'
+          = f.input :state, class: 'form-control'
+          = f.input :zipcode, class: 'form-control'
+          = f.input :about, class: 'form-control'
+          = f.submit 'Save changes', class: 'actions m-tb'

@@ -2,7 +2,7 @@
 %header.container-fluid.bg-c1
   .row
     .col-md-5
-      %a{href: "/"}
+      %a{href: '/'}
         %h1.bold.logo cultivated commerce        
     .col-md-7.pull-right
       %p.navbar-text.pull-right
@@ -14,11 +14,11 @@
             <a href=#{"/users/#{current_user.id}"}>
             %strong= current_user.first_name
             %br
-              = link_to "logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'
+              = link_to 'logout', destroy_user_session_path, method: :delete, :class => 'navbar-link'
         - else
-          %a{"data-target" => "#mySignup", "data-toggle" => "modal", href: ""} Sign up
+          %a{'data-target' => '#mySignup', 'data-toggle' => 'modal', href: ''} Sign up
           |
-          %a{"data-target" => "#myLogin", "data-toggle" => "modal", href: ""} Login
-          = render "layouts/login"
-          = render "layouts/signup"
-        = render "layouts/messages"
+          %a{'data-target' => '#myLogin', 'data-toggle' => 'modal', href: ''} Login
+          = render 'layouts/login'
+          = render 'layouts/signup'
+        = render 'layouts/messages'

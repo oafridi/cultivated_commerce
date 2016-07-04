@@ -5,7 +5,7 @@ class CreateListings < ActiveRecord::Migration
       t.string :description
       t.string :desired
       t.string :quantity
-      t.string :image, default:"orange2.jpg"
+      t.string :image, default: 'orange2.jpg'
       t.boolean :active
       t.belongs_to :item
 

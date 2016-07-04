@@ -2,11 +2,11 @@
   .listing-front.col-sm-12 
     .bg-c1.p-tb
       .type-icon.bg-c1-light.abs
-        %p= image_tag listing.item.category, alt: "item-category", class: ""
+        %p= image_tag listing.item.category, alt: 'item-category', class: ''
         #heart      
       .row
         .col-xs-12
-          = image_tag listing.image, alt: "listing-image", class: "listing-img bg-c3 "        
+          = image_tag listing.image, alt: 'listing-image', class: 'listing-img bg-c3 '
         .col-xs-12
           %h3=listing.title
           %p=listing.description
@@ -15,6 +15,6 @@
           %br
           %br         
           .button.inl
-            = link_to("Edit me", edit_listing_path(listing))           
+            = link_to('Edit me', edit_listing_path(listing))
           .button.inl
-            = link_to("Delete", listing_path(listing), method: :delete)
+            = link_to('Delete', listing_path(listing), method: :delete)

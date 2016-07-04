@@ -2,7 +2,7 @@
 %section.user.col-md-3.bg-c2.text-center
   .bg-w
     .user-info
-      = image_tag @user.img, alt: "user-img", class: "user-img bg-c3"
+      = image_tag @user.img, alt: 'user-img', class: 'user-img bg-c3'
       %h2= @user.first_name
       %p= @user.about
     .text-center
@@ -14,11 +14,11 @@
             %br
       - if user_signed_in? && current_user.id == @user.id
         %div
-          %a#js-edit.button{"data-target" => "#myEditprofile", "data-toggle" => "modal", :href => "#"} Edit profile
+          %a#js-edit.button{'data-target' => '#myEditprofile', 'data-toggle' => 'modal', :href => '#'} Edit profile
           %br
             %br
         %br
-          = render "edit"
+          = render 'edit'
   / EVENTS I WILL ATTEND
   %div
     %h3.bold Exchange's i'm attending
@@ -38,16 +38,16 @@
           %p None right now
       %br
         .button.mapbutton
-          %a{"data-target" => "#myAddEvent", "data-toggle" => "modal"} add exchange
+          %a{'data-target' => '#myAddEvent', 'data-toggle' => 'modal'} add exchange
         %br
           / Add Exchange Modal
-          = render "pages/add_event"
+          = render 'pages/add_event'
 
 / RIGHT SIDE
 %section.listings.bg-c.col-md-9
   - if user_signed_in? && current_user.id == @user.id
     %div
-      = render "listings/form"
+      = render 'listings/form'
   %ul.listings
     - if @listings && !@listings.empty?
       = render partial: 'listing', collection: @listings

@@ -16,15 +16,15 @@ class Event < ActiveRecord::Base
   validates :city, presence: true, length: { in: 3..50 }
   validates :zipcode, presence: true
   validates :state, presence: true, format: { with: /\A[a-zA-Z]{2}\z/,
-                                    message: "must be a valid two-letter abbreviation" }
+                                    message: 'must be a valid two-letter abbreviation'}
   validates :date, presence: true
   validates :description, presence: true, length: { in: 10..300 }
 
   has_many :events_participants
   has_many :events_hosts
 
-  has_many :participants, class_name: "User", through: :events_participants
-  has_many :hosts, class_name: "User", through: :events_hosts
+  has_many :participants, class_name: 'User', through: :events_participants
+  has_many :hosts, class_name: 'User', through: :events_hosts
 
   delegate :email,
            :to => :events_host,
