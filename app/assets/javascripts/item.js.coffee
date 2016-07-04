@@ -31,7 +31,7 @@ $ ->
     $("[data-kind=filter-4]").hide "slow"
     $("[data-kind=filter-5]").hide "slow"
     $("[data-kind=filter-6]").hide "slow"
-    return
+
 
   $(".filter-2").click ->
     $("[data-kind=filter-1]").hide "slow"
@@ -40,7 +40,7 @@ $ ->
     $("[data-kind=filter-4]").hide "slow"
     $("[data-kind=filter-5]").hide "slow"
     $("[data-kind=filter-6]").hide "slow"
-    return
+
 
   $(".filter-3").click ->
     $("[data-kind=filter-1]").hide "slow"
@@ -49,7 +49,7 @@ $ ->
     $("[data-kind=filter-4]").hide "slow"
     $("[data-kind=filter-5]").hide "slow"
     $("[data-kind=filter-6]").hide "slow"
-    return
+
 
   $(".filter-4").click ->
     $("[data-kind=filter-1]").hide "slow"
@@ -58,7 +58,7 @@ $ ->
     $("[data-kind=filter-4]").show "slow"
     $("[data-kind=filter-5]").hide "slow"
     $("[data-kind=filter-6]").hide "slow"
-    return
+
 
   $(".filter-5").click ->
     $("[data-kind=filter-1]").hide "slow"
@@ -67,7 +67,7 @@ $ ->
     $("[data-kind=filter-4]").hide "slow"
     $("[data-kind=filter-5]").show "slow"
     $("[data-kind=filter-6]").hide "slow"
-    return
+
 
   $(".filter-6").click ->
     $("[data-kind=filter-1]").hide "slow"
@@ -76,4 +76,3 @@ $ ->
     $("[data-kind=filter-4]").hide "slow"
     $("[data-kind=filter-5]").hide "slow"
     $("[data-kind=filter-6]").show "slow"
-    return
