@@ -34,14 +34,22 @@ class PagesController < ApplicationController
                            :height => 32
                        })
       end
-      @markers.push(
-          {:lat => current_user.latitude,
-           :lng => current_user.longitude,
-           :infowindow =>
-               "<p> Address: #{current_user.address} </p>\n<br>\n",
-           :picture => {:url => 'https://chart.googleapis.com/chart?chst=d_map_xpin_icon&chld=pin_star%7Chome%7C00FFFF%7CFF0000', :width => 32, :height => 32}}
-      )
+      update_markers
     end
+  end
+
+  def update_markers
+    @markers.push(
+        {:lat => current_user.latitude,
+         :lng => current_user.longitude,
+         :infowindow =>
+             "<p> Address: #{current_user.address} </p>\n<br>\n",
+         :picture => {
+             url: 'https://chart.googleapis.com/chart?chst=d_map_xpin_icon&chld=pin_star%7Chome%7C00FFFF%7CFF0000',
+             width: 32,
+             height: 32}
+        }
+    )
   end
 
   def get_color(event)
