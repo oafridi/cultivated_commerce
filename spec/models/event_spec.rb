@@ -37,7 +37,7 @@ describe Event, :type => :model do
       end
     end
   end
-  
+
   describe 'address_line_1' do
     it 'is invalid when blank' do
       event.address_line_1 = ''
@@ -91,8 +91,8 @@ describe Event, :type => :model do
       event.state = ''
       event.valid?
       expect(event.errors[:state]).to include("can't be blank")
-    end      
-    
+    end
+
     it 'is valid when it is a two letter abbreviation' do
       event.state = 'CA'
       event.valid?
@@ -106,7 +106,7 @@ describe Event, :type => :model do
         expect(event.errors[:state]).to include('must be a valid two-letter abbreviation')
       end
     end
-    
+
     it 'is invalid when it contains non alphabetic characters' do
       invalid_states = [12, '!CA', '35', 'CA$']
       invalid_states.each do |invalid_state|
@@ -114,7 +114,7 @@ describe Event, :type => :model do
         event.valid?
         expect(event.errors[:state]).to include('must be a valid two-letter abbreviation')
       end
-    end 
+    end
   end
 
   describe 'date' do
@@ -123,7 +123,7 @@ describe Event, :type => :model do
       event.valid?
       expect(event.errors[:date]).to include("can't be blank")
     end
-  end    
+  end
 
   describe 'description' do
     it 'is invalid when blank' do
@@ -143,7 +143,7 @@ describe Event, :type => :model do
       event.valid?
       expect(event.errors[:description]).to include('is too short (minimum is 10 characters)')
     end
-  end  
+  end
 
   describe 'instance methods' do
     describe '#address' do
@@ -161,7 +161,7 @@ describe Event, :type => :model do
     describe '#address_changed?' do
       it 'returns true if address_line_1, city or zipcode changes' do
         create(:event)
-        event = Event.last        
+        event = Event.last
         event.address_line_1 = '59 test suite'
         expect(event.address_changed?).to be_truthy
       end

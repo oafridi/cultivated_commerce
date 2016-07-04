@@ -12,20 +12,20 @@ class User < ActiveRecord::Base
   has_many :hosted_events, through: :events_hosts, source: :event
 
   geocoded_by :address
-  
+
   unless Rails.env.test?
     after_validation :geocode, if: :address_changed?
   end
 
-  validates :first_name, presence: true, length: { in: 2..40 }
-  validates :last_name, presence: true, length: { in: 2..40 }
+  validates :first_name, presence: true, length: {in: 2..40}
+  validates :last_name, presence: true, length: {in: 2..40}
 
   def address
     "#{self.address_line_1}, #{self.city}, #{self.zipcode}"
   end
 
   def address_changed?
-    if self.address_line_1 && self.city && self.zipcode    
+    if self.address_line_1 && self.city && self.zipcode
       (self.address_line_1_changed? || self.city_changed? || self.zipcode_changed?)
     else
       false

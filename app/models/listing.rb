@@ -19,5 +19,5 @@ class Listing < ActiveRecord::Base
 
   def format
     self.title.downcase!
-  end  
+  end
 end
